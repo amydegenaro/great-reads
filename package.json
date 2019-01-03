@@ -1,0 +1,44 @@
+{
+  "name": "great-reads",
+  "version": "1.0.0",
+  "description": "AMEX Code Challenge",
+  "main": "index.js",
+  "scripts": {
+    "build-watch": "webpack -w",
+    "start": "node server",
+    "start-dev": "NODE_ENV='development' npm run build-watch & npm run start-server",
+    "start-server": "nodemon server -e html,js,scss --ignore public --ignore client",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amydegenaro/great-reads.git"
+  },
+  "author": "Amy De Genaro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amydegenaro/great-reads/issues"
+  },
+  "homepage": "https://github.com/amydegenaro/great-reads#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "express": "^4.16.4",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
+    "react-redux": "^6.0.0",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/polyfill": "^7.2.5",
+    "@babel/preset-env": "^7.2.3",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.4",
+    "morgan": "^1.9.1",
+    "nodemon": "^1.18.9",
+    "redux-logger": "^3.0.6",
+    "webpack": "^4.28.3",
+    "webpack-cli": "^3.2.0"
+  }
+}
