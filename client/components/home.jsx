@@ -1,5 +1,6 @@
 import React from 'react'
-
+import {connect} from 'react-redux'
+import {getResultsByTitle} from '../store';
 
 class Home extends React.Component {
   constructor() {
@@ -20,6 +21,7 @@ class Home extends React.Component {
   handleSubmit(evt) {
     evt.preventDefault()
     console.log(this.state.title)
+    this.props.getResultsByTitle(this.state.title)
     this.setState({title: ''})
   }
 
@@ -37,4 +39,13 @@ class Home extends React.Component {
   }
 }
 
-export default Home
+const mapState = state => ({
+  search: state.search
+})
+
+const mapDispatch = dispatch => ({
+  getResultsByTitle: searchInput => dispatch(getResultsByTitle(searchInput))
+})
+
+
+export default connect(mapState, mapDispatch)(Home)

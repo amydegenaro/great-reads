@@ -15,6 +15,8 @@ import Home from './components/home'
 // )
 
 ReactDOM.render(
-  <Home />,
+  <Provider store={store}>
+    <Home />
+  </Provider>,
   document.getElementById('app')
 )
