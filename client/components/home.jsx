@@ -34,13 +34,26 @@ class Home extends React.Component {
         <input name="title" value={this.state.title} onChange={this.handleChange} placeholder="Book title"/>
         <button type="submit">Search</button>
       </form>
+      <h3>Results:</h3>
+      <div>
+        {
+          this.props.results.map(result => {
+            return (
+              <div key={result.isbn}>
+                <h4>{result.title}</h4>
+                <p>{result.author}</p>
+              </div>
+            )
+          })
+        }
+      </div>
     </div>
     )
   }
 }
 
 const mapState = state => ({
-  search: state.search
+  results: state.search
 })
 
 const mapDispatch = dispatch => ({

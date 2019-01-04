@@ -14,6 +14,7 @@ router.post('/', async (req, res, next) => {
     const dataWorksID = responseWorksID.data
 
     const bookInfo = {
+      isbn: dataOLID.identifiers.isbn_13[0],
       title: dataOLID.title,
       url: dataOLID.url,
       cover: dataOLID.cover,
