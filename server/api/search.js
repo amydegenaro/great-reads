@@ -4,18 +4,22 @@ module.exports = router
 
 const replaceSpaces = string => string.split(' ').join('+')
 
-// returns an array of objects containing the Open Library ID and works key ID for each search result
+// returns an array of objects for each search query
 router.post('/title', async (req, res, next) => {
   try {
     const searchTerms = replaceSpaces(req.body.search) // separate by + signs
     const {data} = await axios.get(`http://openlibrary.org/search.json?title=${searchTerms}`)
-    const resultKeys = data.docs.map(result => {
+    const results = data.docs.map(result => {
       return {
+        title: result.title,
+        author: result.author_name,
+        year: result.first_publish_year,
+        editions: result.edition_count,
         openLibID: result.cover_edition_key,
         worksID: result.key
       }
     })
-    res.json(resultKeys)
+    res.json(results)
   } catch (err) {
     next(err)
   }
