@@ -11,13 +11,13 @@ export const getResultsByTitle = search => async dispatch => {
   try {
     const {data} = await axios.post('/api/search/title', {search})
     const books = []
-    data.forEach(async result => {
-      if (Object.keys(result).length === 2) {
-        const res = await axios.post(`/api/book/`, result)
-        books.push(res.data)
-      }
-    })
-    dispatch(gotResultsByTitle(books))
+    // data.forEach(async result => {
+    //   if (Object.keys(result).length === 2) {
+    //     const res = await axios.post(`/api/book/`, result)
+    //     books.push(res.data)
+    //   }
+    // })
+    dispatch(gotResultsByTitle(data))
   } catch (err) {
     console.error(err)
   }

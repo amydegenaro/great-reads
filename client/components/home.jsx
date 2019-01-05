@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {getResultsByTitle} from '../store';
+import {getResultsByTitle} from '../store'
+import SearchResults from './searchResults'
 
 class Home extends React.Component {
   constructor() {
@@ -12,6 +13,10 @@ class Home extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   return this.state.title === nextState.title
+  // }
+
   handleChange(evt) {
     this.setState({
       [evt.target.name]: evt.target.value
@@ -20,12 +25,12 @@ class Home extends React.Component {
 
   handleSubmit(evt) {
     evt.preventDefault()
-    console.log(this.state.title)
     this.props.getResultsByTitle(this.state.title)
     this.setState({title: ''})
   }
 
   render() {
+    console.log('props', this.props)
     return (
     <div>
       <h2>GreatReads</h2>
@@ -35,18 +40,7 @@ class Home extends React.Component {
         <button type="submit">Search</button>
       </form>
       <h3>Results:</h3>
-      <div>
-        {
-          this.props.results.map(result => {
-            return (
-              <div key={result.isbn}>
-                <h4>{result.title}</h4>
-                <p>{result.author}</p>
-              </div>
-            )
-          })
-        }
-      </div>
+      <SearchResults results={this.props.results} />
     </div>
     )
   }
