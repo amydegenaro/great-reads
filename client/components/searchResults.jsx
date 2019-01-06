@@ -9,7 +9,7 @@ const SearchResults = props => {
       <button>Sort by Author</button>
       <button>Sort by Year</button>
 
-      {/* Filter ideas: remove unknown author */}
+      {/* Filter ideas: remove unknown author, genre?? */}
 
       {
         props.results.map((result, idx) => {
