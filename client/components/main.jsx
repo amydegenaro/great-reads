@@ -4,13 +4,15 @@ import {getResultsByTitle} from '../store'
 import SearchBox from './SearchBox'
 import SortButtons from './SortButtons'
 import SearchResults from './SearchResults'
+import {sortResults} from '../utilityFunctions'
+
 
 class Main extends React.Component {
   constructor() {
     super()
     this.state = {
       title: '',
-      sort: 'relevance',
+      visible: []
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -29,9 +31,10 @@ class Main extends React.Component {
     this.setState({title: ''})
   }
 
+  // add this to redux store instead?
   handleSort(evt) {
     this.setState({
-      sort: evt.target.name
+      visible: sortResults(this.props.results, evt.target.name)
     })
   }
 
@@ -41,7 +44,7 @@ class Main extends React.Component {
         <h2>GreatReads</h2>
         <SearchBox handleChange={this.handleChange} handleSubmit={this.handleSubmit} state={this.state} />
         <SortButtons handleSort={this.handleSort} />
-        <SearchResults results={this.props.results} sort={this.state.sort} />
+        <SearchResults results={this.state.visible.length > 0 ? this.state.visible : this.props.results} />
       </div>
     )
   }

@@ -12,9 +12,10 @@ router.post('/title', async (req, res, next) => {
     const results = data.docs.map(result => {
       return {
         title: result.title,
-        author: result.author_name,
+        author: result.author_name || 'Unknown author',
         year: result.first_publish_year || null,
         editions: result.edition_count,
+        tags: result.subject,
         openLibID: result.cover_edition_key,
         worksID: result.key
       }
