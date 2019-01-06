@@ -1,10 +1,25 @@
 import React from 'react'
+import {sortAscending, sortDescending} from '../utilityFunctions'
 
 const SearchResults = props => {
+  let results = []
+
+  switch (props.sort) {
+    case 'year':
+      results = sortAscending(props.results, props.sort)
+      break;
+    case 'editions':
+      results = sortDescending(props.results, props.sort)
+      break;
+    default:
+      results = props.results
+      break;
+  }
+
   return (
     <div>
       {
-        props.results.map((result, idx) => {
+        results.map((result, idx) => {
           return (
             <div key={idx}>
               <h4>{result.title}</h4>

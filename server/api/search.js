@@ -13,7 +13,7 @@ router.post('/title', async (req, res, next) => {
       return {
         title: result.title,
         author: result.author_name,
-        year: result.first_publish_year,
+        year: result.first_publish_year || null,
         editions: result.edition_count,
         openLibID: result.cover_edition_key,
         worksID: result.key

@@ -10,7 +10,7 @@ class Main extends React.Component {
     super()
     this.state = {
       title: '',
-      sort: '',
+      sort: 'relevance',
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -36,7 +36,6 @@ class Main extends React.Component {
   }
 
   render() {
-    console.log('SEARCH SELECTED: ', this.state.sort)
     return (
       <div>
         <h2>GreatReads</h2>

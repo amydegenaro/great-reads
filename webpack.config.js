@@ -1,10 +1,9 @@
 const isDev = process.env.NODE_ENV === 'development'
-const {resolve} = require('path')
 
 module.exports = {
   mode: isDev ? 'development' : 'production',
   entry: [
-    '@babel/polyfill', // enables async-await
+    '@babel/polyfill',
     './client/app.js'
   ],
   output: {
