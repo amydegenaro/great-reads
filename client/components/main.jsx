@@ -2,15 +2,19 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {getResultsByTitle} from '../store'
 import SearchBox from './SearchBox'
+import SortButtons from './SortButtons'
+import SearchResults from './SearchResults'
 
 class Main extends React.Component {
   constructor() {
     super()
     this.state = {
-      title: ''
+      title: '',
+      sort: '',
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleSort = this.handleSort.bind(this)
   }
 
   handleChange(evt) {
@@ -25,15 +29,31 @@ class Main extends React.Component {
     this.setState({title: ''})
   }
 
+  handleSort(evt) {
+    this.setState({
+      sort: evt.target.name
+    })
+  }
+
   render() {
+    console.log('SEARCH SELECTED: ', this.state.sort)
     return (
-      <SearchBox handleChange={this.handleChange} handleSubmit={this.handleSubmit} state={this.state}/>
+      <div>
+        <h2>GreatReads</h2>
+        <SearchBox handleChange={this.handleChange} handleSubmit={this.handleSubmit} state={this.state} />
+        <SortButtons handleSort={this.handleSort} />
+        <SearchResults results={this.props.results} sort={this.state.sort} />
+      </div>
     )
   }
 }
+
+const mapState = state => ({
+  results: state.search
+})
 
 const mapDispatch = dispatch => ({
   getResultsByTitle: searchInput => dispatch(getResultsByTitle(searchInput))
 })
 
-export default connect(null, mapDispatch)(Main)
+export default connect(mapState, mapDispatch)(Main)
