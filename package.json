@@ -5,6 +5,9 @@
   "main": "index.js",
   "scripts": {
     "build-watch": "webpack -w",
+    "bundle": "git add -f public/bundle.js public/bundle.js.map",
+    "deploy": "npm run bundle & npm run heroku",
+    "heroku": "git push heroku master",
     "start": "node server",
     "start-dev": "NODE_ENV='development' npm run build-watch & npm run start-server",
     "start-server": "nodemon server -e html,js,scss --ignore public --ignore client",
