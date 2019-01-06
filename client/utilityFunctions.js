@@ -34,15 +34,30 @@ export function generateTagList(arr) {
   return tagList
 }
 
-export function filterResults(arr, category, value) {
-  switch (category) {
-    case 'author':
-      return arr.filter(item => item.author.includes(value))
-    case 'tags':
-      return arr.filter(item => item.tags.includes(value))
-    case 'year':
-      return arr.filter(item => item.year === value)
-    default:
-      return arr
-  }
+// export function generateAuthorList(arr) {
+//   const authors = []
+//   arr.forEach(item => {
+//     if (!authors.includes(item)) {
+//       authors.push(item)
+//     }
+//   })
+//   return authors
+// }
+
+// export function generateYearList(arr) {
+//   return arr.map(item => item.year)
+// }
+
+export function filterResults(arr, state) {
+  return arr
+    .filter(item => state.author ? item.author.includes(state.author) : true)
+    .filter(item => state.tags ? item.tags.includes(state.tags) : true)
+    .filter(item => state.year ? item.year === Number(state.year) : true)
+}
+
+// ------COMBINED------
+
+export function filterAndSort(arr, state) {
+  const temp = filterResults(arr, state)
+  return sortResults(temp, state.sort)
 }

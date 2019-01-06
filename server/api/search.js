@@ -15,7 +15,7 @@ router.post('/title', async (req, res, next) => {
         author: result.author_name || 'Unknown author',
         year: result.first_publish_year || null,
         editions: result.edition_count,
-        tags: result.subject,
+        tags: result.subject || [],
         openLibID: result.cover_edition_key,
         worksID: result.key
       }

@@ -1,18 +1,22 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {getResultsByTitle} from '../store'
+import {filterAndSort} from '../utilityFunctions'
+
 import SearchBox from './SearchBox'
 import SortButtons from './SortButtons'
+import FilterOptions from './FilterOptions'
 import SearchResults from './SearchResults'
-import {sortResults} from '../utilityFunctions'
-
 
 class Main extends React.Component {
   constructor() {
     super()
     this.state = {
-      title: '',
-      visible: []
+      title: '', // search query
+      sort: '', // selected sort value
+      author: '', // selected filter value
+      tags: '', // selected filter value
+      year: '' // selected filter value
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -31,10 +35,9 @@ class Main extends React.Component {
     this.setState({title: ''})
   }
 
-  // add this to redux store instead?
   handleSort(evt) {
     this.setState({
-      visible: sortResults(this.props.results, evt.target.name)
+      sort: evt.target.name
     })
   }
 
@@ -42,9 +45,17 @@ class Main extends React.Component {
     return (
       <div>
         <h2>GreatReads</h2>
-        <SearchBox handleChange={this.handleChange} handleSubmit={this.handleSubmit} state={this.state} />
+        <SearchBox
+          handleChange={this.handleChange}
+          handleSubmit={this.handleSubmit}
+          state={this.state}
+        />
         <SortButtons handleSort={this.handleSort} />
-        <SearchResults results={this.state.visible.length > 0 ? this.state.visible : this.props.results} />
+        <FilterOptions
+          handleChange={this.handleChange}
+          filter={this.state.filter}
+        />
+        <SearchResults results={filterAndSort(this.props.results, this.state)} />
       </div>
     )
   }

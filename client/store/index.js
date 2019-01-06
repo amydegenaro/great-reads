@@ -7,9 +7,8 @@ import axios from 'axios'
 // INITIAL STORE STATE
 const initialState = {
   search: [],
-  sort: '',
   tags: [],
-  filtered: [],
+  // filtered: [],
   detail: {}
 }
 
