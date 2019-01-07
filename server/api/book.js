@@ -18,10 +18,10 @@ router.post('/', async (req, res, next) => {
       title: dataOLID.title,
       url: dataOLID.url,
       cover: dataOLID.cover,
-      author: dataOLID.by_statement,
+      author: dataOLID.by_statement || 'Unknown author',
       date: dataOLID.publish_date,
       pages: dataOLID.number_of_pages,
-      description: dataWorksID.description
+      description: dataWorksID.description || 'No description'
     }
 
     res.json(bookInfo)

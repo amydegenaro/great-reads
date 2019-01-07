@@ -1,12 +1,10 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {getResultsByTitle} from '../store'
-import {filterAndSort} from '../utilityFunctions'
+import {getResultsByTitle, getBookDetails} from '../store'
 
 import SearchBox from './SearchBox'
-import SortButtons from './SortButtons'
-import FilterOptions from './FilterOptions'
-import SearchResults from './SearchResults'
+import SearchView from './searchView'
+import BookView from './bookView'
 
 class Main extends React.Component {
   constructor() {
@@ -16,11 +14,14 @@ class Main extends React.Component {
       sort: '', // selected sort value
       author: '', // selected filter value
       tags: '', // selected filter value
-      year: '' // selected filter value
+      year: '', // selected filter value
+      bookSelected: false,
+      loading: false
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleSort = this.handleSort.bind(this)
+    this.selectBook = this.selectBook.bind(this)
   }
 
   handleChange(evt) {
@@ -29,15 +30,25 @@ class Main extends React.Component {
     })
   }
 
-  handleSubmit(evt) {
+  async handleSubmit(evt) {
     evt.preventDefault()
-    this.props.getResultsByTitle(this.state.title)
-    this.setState({title: ''})
+    await this.props.getResultsByTitle(this.state.title)
+    this.setState({
+      title: '',
+      bookSelected: false
+    })
   }
 
   handleSort(evt) {
     this.setState({
       sort: evt.target.name
+    })
+  }
+
+  async selectBook(book) {
+    await this.props.getBookDetails(book)
+    this.setState({
+      bookSelected: true
     })
   }
 
@@ -48,25 +59,33 @@ class Main extends React.Component {
         <SearchBox
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
-          state={this.state}
+          title={this.state.title}
         />
-        <SortButtons handleSort={this.handleSort} />
-        <FilterOptions
-          handleChange={this.handleChange}
-          results={this.props.results}
-        />
-        <SearchResults results={filterAndSort(this.props.results, this.state)} />
+        {
+          this.state.bookSelected ?
+          <BookView details={this.props.details} />
+          :
+          <SearchView
+            handleChange={this.handleChange}
+            handleSort={this.handleSort}
+            selectBook={this.selectBook}
+            results={this.props.results}
+            state={this.state}
+          />
+        }
       </div>
     )
   }
 }
 
 const mapState = state => ({
-  results: state.search
+  results: state.searchResults,
+  details: state.selectedBook
 })
 
 const mapDispatch = dispatch => ({
-  getResultsByTitle: searchInput => dispatch(getResultsByTitle(searchInput))
+  getResultsByTitle: searchInput => dispatch(getResultsByTitle(searchInput)),
+  getBookDetails: bookInfo => dispatch(getBookDetails(bookInfo))
 })
 
 export default connect(mapState, mapDispatch)(Main)
