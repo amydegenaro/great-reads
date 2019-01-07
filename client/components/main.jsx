@@ -63,7 +63,6 @@ class Main extends React.Component {
   }
 
   unselectBook() {
-    // await this.props.getBookDetails(book)
     this.setState({
       bookSelected: false
     })
@@ -72,12 +71,14 @@ class Main extends React.Component {
   render() {
     return (
       <div>
-        <h2>GreatReads</h2>
-        <SearchBox
-          handleChange={this.handleChange}
-          handleSubmit={this.handleSubmit}
-          title={this.state.title}
-        />
+        <div id='header'>
+          <h2>GreatReads.</h2>
+          <SearchBox
+            handleChange={this.handleChange}
+            handleSubmit={this.handleSubmit}
+            title={this.state.title}
+          />
+        </div>
         {
           this.state.bookSelected ?
           <BookView

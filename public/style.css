@@ -1,0 +1,49 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%; /* set base same as 10px */
+}
+
+@font-face {
+  font-family: 'Prospectus Pro XL Bold';
+  src: url('/fonts/ProspectusPro/ProspectusXLBld.otf')
+    format('opentype');
+}
+
+@font-face {
+  font-family: 'Prospectus Pro S Regular';
+  src: url('/fonts/ProspectusPro/ProspectusSReg.otf')
+    format('opentype');
+}
+
+body {
+  /* margin: 2rem; */
+  font-family: 'Prospectus Pro S Regular';
+  font-size: 1.6rem;
+}
+
+h2 {
+  font-family: 'Prospectus Pro XL Bold';
+  font-size: 6rem;
+}
+
+#header {
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 25vh;
+  background-image: linear-gradient(
+    to bottom,
+    #241c0875,
+    #42310175),
+    url('/images/library_wallpaper.jpg');
+  /* background-image: url('/images/library_wallpaper.jpg'); */
+  background-size: cover;
+  background-position: center;
+}
+
