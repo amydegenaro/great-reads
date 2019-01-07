@@ -53,7 +53,7 @@ class Main extends React.Component {
         <SortButtons handleSort={this.handleSort} />
         <FilterOptions
           handleChange={this.handleChange}
-          filter={this.state.filter}
+          results={this.props.results}
         />
         <SearchResults results={filterAndSort(this.props.results, this.state)} />
       </div>

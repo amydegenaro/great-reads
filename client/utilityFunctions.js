@@ -20,34 +20,6 @@ export function sortResults(arr, sortValue) {
 
 // ------FILTER FUNCTIONS------
 
-// create a list & count of all tags from an array of search results, to use in filter dropdown
-export function generateTagList(arr) {
-  const tagList = {}
-  arr.forEach(item => {
-    if (item.tags) {
-      item.tags.forEach(tag => {
-        if (tagList[tag]) tagList[tag]++
-        else tagList[tag] = 1
-      })
-    }
-  })
-  return tagList
-}
-
-// export function generateAuthorList(arr) {
-//   const authors = []
-//   arr.forEach(item => {
-//     if (!authors.includes(item)) {
-//       authors.push(item)
-//     }
-//   })
-//   return authors
-// }
-
-// export function generateYearList(arr) {
-//   return arr.map(item => item.year)
-// }
-
 export function filterResults(arr, state) {
   return arr
     .filter(item => state.author ? item.author.includes(state.author) : true)
@@ -55,9 +27,45 @@ export function filterResults(arr, state) {
     .filter(item => state.year ? item.year === Number(state.year) : true)
 }
 
+// Get all tags/subjects found in search results for filter dropdown
+export function generateTagList(arr) {
+  const tagList = {}
+  arr.forEach(item => {
+    if (item.tags) {
+      item.tags.forEach(tag => {
+        if (tagList[tag]) tagList[tag]++ // keep a record of tag count in case we want it later
+        else tagList[tag] = 1
+      })
+    }
+  })
+  return Object.keys(tagList)
+}
+
+// Get all authors found in search results for filter dropdown
+export function generateAuthorList(arr) {
+  const authors = {}
+  arr.forEach(item => {
+    if (Array.isArray(item.author)) { // if there is more than one author, loop through them
+      item.author.forEach(author => {
+        if (!authors[author]) authors[author] = true // and add any new ones to the list
+      })
+    } else if (!authors[item.author]) authors[item.author] = true
+      // if there's only one author, add it to the list if it's new
+  })
+  return Object.keys(authors)
+}
+
+// Get all publication years found in search results for filter dropdown
+export function generateYearList(arr) {
+  return arr.map(item => item.year)
+}
+
+
 // ------COMBINED------
 
 export function filterAndSort(arr, state) {
-  const temp = filterResults(arr, state)
-  return sortResults(temp, state.sort)
+  return sortResults(
+    filterResults(arr, state),
+    state.sort
+  )
 }
