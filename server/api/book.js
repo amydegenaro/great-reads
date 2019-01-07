@@ -18,7 +18,7 @@ router.post('/', async (req, res, next) => {
       title: dataOLID.title,
       url: dataOLID.url,
       cover: dataOLID.cover,
-      author: dataOLID.by_statement || 'Unknown author',
+      author: dataOLID.authors || 'Unknown author',
       date: dataOLID.publish_date,
       pages: dataOLID.number_of_pages,
       description: dataWorksID.description || 'No description'

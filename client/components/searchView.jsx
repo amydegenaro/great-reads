@@ -11,6 +11,7 @@ const SearchView = props => {
       <SortButtons handleSort={props.handleSort} />
       <FilterOptions
         handleChange={props.handleChange}
+        clearFilters={props.clearFilters}
         results={props.results}
       />
       <SearchResults

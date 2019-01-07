@@ -16,12 +16,14 @@ class Main extends React.Component {
       tags: '', // selected filter value
       year: '', // selected filter value
       bookSelected: false,
-      loading: false
+      // loading: false
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleSort = this.handleSort.bind(this)
+    this.clearFilters = this.clearFilters.bind(this)
     this.selectBook = this.selectBook.bind(this)
+    this.unselectBook = this.unselectBook.bind(this)
   }
 
   handleChange(evt) {
@@ -45,10 +47,25 @@ class Main extends React.Component {
     })
   }
 
+  clearFilters() {
+    this.setState({
+      author: '',
+      tags: '',
+      year: ''
+    })
+  }
+
   async selectBook(book) {
     await this.props.getBookDetails(book)
     this.setState({
       bookSelected: true
+    })
+  }
+
+  unselectBook() {
+    // await this.props.getBookDetails(book)
+    this.setState({
+      bookSelected: false
     })
   }
 
@@ -63,11 +80,15 @@ class Main extends React.Component {
         />
         {
           this.state.bookSelected ?
-          <BookView details={this.props.details} />
+          <BookView
+            unselectBook={this.unselectBook}
+            details={this.props.details}
+          />
           :
           <SearchView
             handleChange={this.handleChange}
             handleSort={this.handleSort}
+            clearFilters={this.clearFilters}
             selectBook={this.selectBook}
             results={this.props.results}
             state={this.state}

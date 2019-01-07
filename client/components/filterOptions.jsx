@@ -9,7 +9,6 @@ const FilterOptions = props => {
 
   return (
     <div>
-      <p>Filter</p>
       <form>
         <label name='author'>Author</label>
         <select name='author' onChange={props.handleChange}>
@@ -34,6 +33,8 @@ const FilterOptions = props => {
             yearList.map((year, idx) => <option key={idx} value={year}>{year}</option>)
           }
         </select>
+
+        <button type='button' onClick={props.clearFilters}>Clear</button>
       </form>
     </div>
   )
