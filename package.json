@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build-watch": "webpack -w",
-    "bundle-add": "git add -f public/bundle.js public/bundle.js.map",
+    "bundle-add": "git add -A -f public/bundle.js public/bundle.js.map",
     "bundle-cm": "git cm 'Deploying'",
     "deploy": "npm run bundle-add && npm run bundle-cm && npm run heroku",
     "heroku": "git push heroku master",

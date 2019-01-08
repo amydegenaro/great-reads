@@ -30,7 +30,7 @@ h1, h2, h3 {
 }
 
 #header {
-  color: white;
+  color: #fff;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -40,7 +40,6 @@ h1, h2, h3 {
     #241c0875,
     #42310175),
     url('/images/library_wallpaper.jpg');
-  /* background-image: url('/images/library_wallpaper.jpg'); */
   background-size: cover;
   background-position: center;
 }
@@ -69,4 +68,18 @@ h1, h2, h3 {
 
 select {
   max-width: 30rem;
+}
+
+@media screen and (max-width: 600px) {
+  #header {
+    flex-direction: column;
+  }
+
+  #search {
+    flex-direction: column;
+  }
+
+  #filters, #main {
+    flex: none;
+  }
 }
