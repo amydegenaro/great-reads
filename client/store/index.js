@@ -12,6 +12,7 @@ const initialState = {
 // ACTION TYPES
 const GOT_RESULTS_BY_TITLE = 'GOT_RESULTS_BY_TITLE'
 const GOT_BOOK_DETAILS = 'GOT_BOOK_DETAILS'
+const REMOVED_RESULTS = 'REMOVED_RESULTS'
 
 // ACTION CREATORS
 const gotResultsByTitle = list => ({
@@ -22,6 +23,10 @@ const gotResultsByTitle = list => ({
 const gotBookDetails = details => ({
   type: GOT_BOOK_DETAILS,
   details
+})
+
+const removedResults = () => ({
+  type: REMOVED_RESULTS
 })
 
 // THUNK CREATORS
@@ -44,6 +49,14 @@ export const getBookDetails = book => async dispatch => {
   }
 }
 
+export const removeResults = () => async dispatch => {
+  try {
+    dispatch(removedResults())
+  } catch (err) {
+    console.error(err)
+  }
+}
+
 // REDUCER
 const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -51,6 +64,8 @@ const reducer = (state = initialState, action) => {
       return {...state, searchResults: action.list}
     case GOT_BOOK_DETAILS:
       return {...state, selectedBook: action.details}
+    case REMOVED_RESULTS:
+      return initialState
     default:
       return state
   }
