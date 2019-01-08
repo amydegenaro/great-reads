@@ -79,22 +79,24 @@ class Main extends React.Component {
             title={this.state.title}
           />
         </div>
-        {
-          this.state.bookSelected ?
-          <BookView
-            unselectBook={this.unselectBook}
-            details={this.props.details}
-          />
-          :
-          <SearchView
-            handleChange={this.handleChange}
-            handleSort={this.handleSort}
-            clearFilters={this.clearFilters}
-            selectBook={this.selectBook}
-            results={this.props.results}
-            state={this.state}
-          />
-        }
+        <div id='content'>
+          {
+            this.state.bookSelected ?
+            <BookView
+              unselectBook={this.unselectBook}
+              details={this.props.details}
+            />
+            :
+            <SearchView
+              handleChange={this.handleChange}
+              handleSort={this.handleSort}
+              clearFilters={this.clearFilters}
+              selectBook={this.selectBook}
+              results={this.props.results}
+              state={this.state}
+            />
+          }
+        </div>
       </div>
     )
   }

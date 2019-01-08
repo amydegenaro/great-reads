@@ -7,17 +7,19 @@ import SearchResults from './SearchResults'
 
 const SearchView = props => {
   return (
-    <div>
-      <SortButtons handleSort={props.handleSort} />
+    <div id='search'>
       <FilterOptions
         handleChange={props.handleChange}
         clearFilters={props.clearFilters}
         results={props.results}
       />
-      <SearchResults
-        results={filterAndSort(props.results, props.state)}
-        selectBook={props.selectBook}
-      />
+      <div id='main'>
+        <SortButtons handleSort={props.handleSort} />
+        <SearchResults
+          results={filterAndSort(props.results, props.state)}
+          selectBook={props.selectBook}
+        />
+      </div>
     </div>
   )
 }
