@@ -3,7 +3,7 @@ import SearchBox from './SearchBox'
 
 const Home = props => {
   return (
-    <div id='home'>
+    <div id="home">
       <h2>GreatReads.</h2>
       <SearchBox
         handleChange={props.handleChange}

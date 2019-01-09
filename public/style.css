@@ -29,16 +29,12 @@ h1, h2, h3 {
   font-family: 'Prospectus Pro XL Bold';
 }
 
-form {
+.search-form {
   display: flex;
   width: 35rem;
 }
 
-select {
-  max-width: 30rem;
-}
-
-input {
+.search-box {
   flex: 3 0 0;
   font-family: 'Prospectus Pro S Regular';
   font-size: 1.6rem;
@@ -49,15 +45,16 @@ input {
   background: rgba(255, 255, 255, 0.781);
 }
 
-button {
+.btn {
   flex: 1 0 0;
   font-family: 'Prospectus Pro S Regular';
   font-size: 1.6rem;
   color: #fff;
+  height: 3.4rem;
   border-radius: .8rem;
   border: solid #057692 1px;
   background-image: linear-gradient(
-    to bottom right,
+    to bottom,
     #07aed8,
     #057692);
 }
@@ -84,11 +81,11 @@ button {
   height: 100vh;
 }
 
-#home form {
+#home .search-form {
   width: 40rem;
 }
 
-#home input, #home button {
+#home .search-box, #home .btn {
   height: 4rem;
   font-size: 1.7rem;
   border-radius: 1rem;

@@ -87,7 +87,7 @@ class Main extends React.Component {
           />
           :
           <div>
-            <div id='header'>
+            <div id="header">
               <h2 onClick={this.clearSearchResults} >GreatReads.</h2>
               <SearchBox
                 handleChange={this.handleChange}
@@ -95,7 +95,7 @@ class Main extends React.Component {
                 title={this.state.title}
               />
             </div>
-            <div id='content'>
+            <div id="content">
               {
                 // show the single book view if a search result has been cicked
                 // otherwise, show the search results

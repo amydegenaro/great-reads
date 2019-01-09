@@ -2,7 +2,7 @@ import React from 'react'
 
 const SearchResults = props => {
   return (
-    <div id='results'>
+    <div id="results">
       {
         props.results.map((result, idx) => {
           return (
