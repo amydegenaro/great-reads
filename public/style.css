@@ -90,10 +90,6 @@ h1, h2, h3 {
   border: solid #8b3a52 .1rem;
 }
 
-.filter-label {
-  text-transform: uppercase;
-}
-
 .single-result {
   margin-bottom: 2rem;
   border: solid #f0f0f0 .3rem;
