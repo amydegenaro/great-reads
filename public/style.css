@@ -20,7 +20,6 @@ html {
   font-size: 62.5%; /* set base same as 10px */
 }
 
-
 body {
   font-family: 'Prospectus Pro S Regular';
   font-size: 1.6rem;
@@ -32,6 +31,7 @@ h1, h2, h3 {
 
 form {
   display: flex;
+  width: 35rem;
 }
 
 select {
@@ -41,8 +41,10 @@ select {
 input {
   flex: 3 0 0;
   font-family: 'Prospectus Pro S Regular';
+  font-size: 1.6rem;
   text-align: center;
-  border-radius: .5rem;
+  height: 3.4rem;
+  border-radius: .8rem;
   border: solid #057692 1px;
   background: rgba(255, 255, 255, 0.781);
 }
@@ -52,7 +54,7 @@ button {
   font-family: 'Prospectus Pro S Regular';
   font-size: 1.6rem;
   color: #fff;
-  border-radius: 1rem;
+  border-radius: .8rem;
   border: solid #057692 1px;
   background-image: linear-gradient(
     to bottom right,
@@ -86,14 +88,10 @@ button {
   width: 40rem;
 }
 
-#home input {
+#home input, #home button {
   height: 4rem;
-  font-size: 2rem;
+  font-size: 1.7rem;
   border-radius: 1rem;
-}
-
-#home button {
-  height: 4rem;
 }
 
 /* Search Results Header */
@@ -105,10 +103,6 @@ button {
 
 #header h2 {
   font-size: 6rem;
-}
-
-#header input {
-
 }
 
 /* Search Results Content */
