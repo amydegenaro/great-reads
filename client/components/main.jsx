@@ -11,11 +11,12 @@ class Main extends React.Component {
   constructor() {
     super()
     this.state = {
-      title: '', // search query
-      sort: '', // selected sort value
-      author: '', // selected filter value
-      tags: '', // selected filter value
-      year: '', // selected filter value
+      // search query, selected sort value, and selected filters
+      title: '',
+      sort: '',
+      author: '',
+      tags: '',
+      year: '',
       bookSelected: false,
       // loading: false
     }
@@ -38,7 +39,6 @@ class Main extends React.Component {
     evt.preventDefault()
     await this.props.getResultsByTitle(this.state.title)
     this.setState({
-      // title: '',
       sort: 'relevance',
       bookSelected: false
     })
