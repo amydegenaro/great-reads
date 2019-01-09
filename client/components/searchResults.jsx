@@ -6,8 +6,8 @@ const SearchResults = props => {
       {
         props.results.map((result, idx) => {
           return (
-            <div key={idx}>
-              <h4 onClick={() => props.selectBook(result)}>{result.title}</h4>
+            <div key={idx} className="single-result">
+              <h4 className="result-title" onClick={() => props.selectBook(result)}>{result.title}</h4>
               <p>by {result.author}</p>
               <p>First published in {result.year}</p>
               <p>Editions: {result.editions}</p>

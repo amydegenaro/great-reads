@@ -49,7 +49,7 @@ h1, h2, h3 {
   text-align: center;
   height: 3.4rem;
   border-radius: .8rem;
-  border: solid #057692 1px;
+  border: solid #057692 .1rem;
   background: rgba(255, 255, 255, 0.781);
 }
 
@@ -58,7 +58,7 @@ h1, h2, h3 {
   font-size: 1.6rem;
   color: #fff;
   border-radius: .8rem;
-  border: solid #057692 1px;
+  border: solid #057692 .1rem;
   background-image: linear-gradient(
     to bottom,
     #07aed8,
@@ -87,11 +87,22 @@ h1, h2, h3 {
     to bottom,
     #b95d79,
     #8b3a52);
-  border: solid #8b3a52 1px;
+  border: solid #8b3a52 .1rem;
 }
 
 .filter-label {
   text-transform: uppercase;
+}
+
+.single-result {
+  margin-bottom: 2rem;
+  border: solid #f0f0f0 .3rem;
+  padding: 1rem;
+  background-color: #fff;}
+
+.result-title {
+  color: #057692;
+  cursor: pointer;
 }
 
 #home, #header {
@@ -164,7 +175,7 @@ h1, h2, h3 {
 #main {
   flex: 3 0 0;
   margin-left: 4rem;
-  border-left: solid #fff 2px;
+  border-left: solid #fff .2rem;
   padding-left: 4rem;
 }
 
@@ -173,6 +184,7 @@ h1, h2, h3 {
 @media screen and (max-width: 850px) {
   #header {
     flex-direction: column;
+    justify-content: center;
   }
 
   #search {
@@ -183,7 +195,14 @@ h1, h2, h3 {
     flex: none;
   }
 
+  #filters {
+    height: 15rem;
+  }
+
   #main {
-    margin: 5rem 0 0 0;
+    margin: 2rem 0 0 0;
+    border-top: solid #fff .2rem;
+    border-left: none;
+    padding: 2rem 0 0 0;
   }
 }
