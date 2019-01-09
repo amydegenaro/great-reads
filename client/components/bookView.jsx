@@ -11,7 +11,7 @@ const BookView = props => {
       <p>{details.pages} pages</p>
       <p>First published in {details.date}</p>
       <img src={details.cover.medium} />
-      <p>{details.description}</p>
+      {/* <p>{details.description}</p> */}
     </div>
   )
 }

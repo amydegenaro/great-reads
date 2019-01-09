@@ -9,7 +9,7 @@ const FilterOptions = props => {
 
   return (
     <form id="filters">
-      <label name="author">Author</label>
+      <label name="author" className="filter-label">Author</label>
       <select name="author" onChange={props.handleChange}>
         <option value=''>All</option>
         {
@@ -17,7 +17,7 @@ const FilterOptions = props => {
         }
       </select>
 
-      <label name="tags">Tags</label>
+      <label name="tags" className="filter-label">Tags</label>
       <select name="tags" onChange={props.handleChange}>
         <option value=''>All</option>
         {
@@ -25,7 +25,7 @@ const FilterOptions = props => {
         }
       </select>
 
-      <label name="year">Year Published</label>
+      <label name="year" className="filter-label">Year Published</label>
       <select name="year" onChange={props.handleChange}>
         <option value=''>All</option>
         {
@@ -33,7 +33,7 @@ const FilterOptions = props => {
         }
       </select>
 
-      <button type="button" onClick={props.clearFilters}>Clear</button>
+      <button type="button" className="btn btn-clear" onClick={props.clearFilters}>Clear Filters</button>
     </form>
   )
 }

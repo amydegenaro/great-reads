@@ -38,7 +38,8 @@ class Main extends React.Component {
     evt.preventDefault()
     await this.props.getResultsByTitle(this.state.title)
     this.setState({
-      title: '',
+      // title: '',
+      sort: 'relevance',
       bookSelected: false
     })
   }
@@ -79,13 +80,13 @@ class Main extends React.Component {
       <div>
         {
           // show the home landing page if there are no search results
-          this.props.results.length === 0 ?
-          <Home
-            handleChange={this.handleChange}
-            handleSubmit={this.handleSubmit}
-            title={this.state.title}
-          />
-          :
+          // this.props.results.length === 0 ?
+          // <Home
+          //   handleChange={this.handleChange}
+          //   handleSubmit={this.handleSubmit}
+          //   title={this.state.title}
+          // />
+          // :
           <div>
             <div id="header">
               <h2 onClick={this.clearSearchResults} >GreatReads.</h2>

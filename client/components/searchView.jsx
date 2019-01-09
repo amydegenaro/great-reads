@@ -14,7 +14,10 @@ const SearchView = props => {
         results={props.results}
       />
       <div id="main">
-        <SortButtons handleSort={props.handleSort} />
+        <SortButtons
+          handleSort={props.handleSort}
+          sort={props.state.sort}
+          />
         <SearchResults
           results={filterAndSort(props.results, props.state)}
           selectBook={props.selectBook}
