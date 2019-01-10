@@ -12,11 +12,11 @@ In developing GreatReads, I challenged myself to write only one 'stateful' class
 
 Due to time contraints, there were a few features that I was unable to implement in GreatReads. Further work on this app would include:
 
-[ ] - Refactor to use React Router
-[ ] - Add a "Search by Author" option
-[ ] - Paginate search results
-[ ] - Toggle sort order upon button re-click
-[ ] - Write tests, especially for Express routes
+- [ ] Refactor to use React Router
+- [ ] Add a "Search by Author" option
+- [ ] Paginate search results
+- [ ] Toggle sort order upon button re-click
+- [ ] Write tests, especially for Express routes
 
 ## Built With
 
