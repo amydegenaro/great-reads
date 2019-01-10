@@ -1,4 +1,4 @@
-# GreatReads
+# GreatReads.
 
 _Search the Open Library API for books_
 
