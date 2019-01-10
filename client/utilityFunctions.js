@@ -22,9 +22,9 @@ export function sortResults(arr, sortValue) {
 
 export function filterResults(arr, state) {
   return arr
-    .filter(item => state.author ? item.author.includes(state.author) : true)
-    .filter(item => state.tags ? item.tags.includes(state.tags) : true)
-    .filter(item => state.year ? item.year === Number(state.year) : true)
+    .filter(item => state.author !== 'All' ? item.author.includes(state.author) : true)
+    .filter(item => state.tags !== 'All' ? item.tags.includes(state.tags) : true)
+    .filter(item => state.year !== 'All' ? item.year === Number(state.year) : true)
 }
 
 // Get all tags/subjects found in search results for filter dropdown

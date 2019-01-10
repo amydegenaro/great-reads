@@ -14,9 +14,9 @@ class Main extends React.Component {
       // search query, selected sort value, and selected filters
       title: '',
       sort: '',
-      author: '',
-      tags: '',
-      year: '',
+      author: 'All',
+      tags: 'All',
+      year: 'All',
       bookSelected: false
     }
     this.handleChange = this.handleChange.bind(this)
@@ -52,9 +52,9 @@ class Main extends React.Component {
 
   clearFilters() {
     this.setState({
-      author: '',
-      tags: '',
-      year: ''
+      author: 'All',
+      tags: 'All',
+      year: 'All'
     })
   }
 

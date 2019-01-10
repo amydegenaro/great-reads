@@ -12,6 +12,9 @@ const SearchView = props => {
         handleChange={props.handleChange}
         clearFilters={props.clearFilters}
         results={props.results}
+        author={props.state.author}
+        tags={props.state.tags}
+        year={props.state.year}
       />
       <div id="main">
         <SortButtons
