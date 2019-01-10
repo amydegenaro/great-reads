@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {getResultsByTitle, getBookDetails, removeResults} from '../store'
+import {getResultsByTitle, getBookDetails, removeResults, showLoading} from '../store'
 
 import SearchBox from './SearchBox'
 import SearchView from './searchView'
@@ -17,8 +17,7 @@ class Main extends React.Component {
       author: '',
       tags: '',
       year: '',
-      bookSelected: false,
-      // loading: false
+      bookSelected: false
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -37,6 +36,7 @@ class Main extends React.Component {
 
   async handleSubmit(evt) {
     evt.preventDefault()
+    this.props.showLoading()
     await this.props.getResultsByTitle(this.state.title)
     this.setState({
       sort: 'relevance',
@@ -59,6 +59,7 @@ class Main extends React.Component {
   }
 
   async selectBook(book) {
+    this.props.showLoading()
     await this.props.getBookDetails(book)
     this.setState({
       bookSelected: true
@@ -112,6 +113,8 @@ class Main extends React.Component {
                   clearFilters={this.clearFilters}
                   selectBook={this.selectBook}
                   results={this.props.results}
+                  foundResults={this.props.foundResults}
+                  loading={this.props.loading}
                   state={this.state}
                 />
               }
@@ -125,13 +128,16 @@ class Main extends React.Component {
 
 const mapState = state => ({
   results: state.searchResults,
-  details: state.selectedBook
+  foundResults: state.foundResults,
+  details: state.selectedBook,
+  loading: state.loading
 })
 
 const mapDispatch = dispatch => ({
   getResultsByTitle: searchInput => dispatch(getResultsByTitle(searchInput)),
   getBookDetails: bookInfo => dispatch(getBookDetails(bookInfo)),
-  removeResults: () => dispatch(removeResults())
+  removeResults: () => dispatch(removeResults()),
+  showLoading: () => dispatch(showLoading())
 })
 
 export default connect(mapState, mapDispatch)(Main)

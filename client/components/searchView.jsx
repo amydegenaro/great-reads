@@ -18,10 +18,22 @@ const SearchView = props => {
           handleSort={props.handleSort}
           sort={props.state.sort}
           />
-        <SearchResults
-          results={filterAndSort(props.results, props.state)}
-          selectBook={props.selectBook}
-        />
+          {
+            props.loading ?
+            <p>Loading, please wait...</p>
+            :
+            <div>
+              {
+                props.foundResults ?
+                <SearchResults
+                  results={filterAndSort(props.results, props.state)}
+                  selectBook={props.selectBook}
+                />
+                :
+                <p>No books found!</p>
+              }
+            </div>
+          }
       </div>
     </div>
   )

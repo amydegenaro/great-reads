@@ -116,7 +116,10 @@ h1, h2, h3 {
 
 .cover-art {
   flex: 1 0 0;
-  min-height: 50rem;
+}
+
+.cover-art img {
+  width: 100%;
 }
 
 .book-details {
@@ -252,13 +255,11 @@ h1, h2, h3 {
   .cover-art {
     flex: none;
     align-self: center;
-    min-height: auto;
-    width: 60%;
   }
 
   .book-details {
     flex: none;
-    padding-top: 2rem;
+    padding-top: 2rem 0 0 0;
   }
 
 }

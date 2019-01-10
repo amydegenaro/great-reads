@@ -38,7 +38,17 @@ export function generateTagList(arr) {
       })
     }
   })
-  return Object.keys(tagList)
+  return Object.keys(tagList).sort((a, b) => { // sort tag list alphabetically
+    a = a.toLowerCase()
+    b = b.toLowerCase()
+    if (a > b) {
+      return 1;
+    } else if (a < b) {
+      return -1;
+    } else if (a === b) {
+      return 0;
+    }
+  })
 }
 
 // Get all authors found in search results for filter dropdown
@@ -52,14 +62,23 @@ export function generateAuthorList(arr) {
     } else if (!authors[item.author]) authors[item.author] = true
       // if there's only one author, add it to the list if it's new
   })
-  return Object.keys(authors)
+  return Object.keys(authors).sort()
 }
 
 // Get all publication years found in search results for filter dropdown
 export function generateYearList(arr) {
-  return arr.map(item => item.year)
-}
+  // return arr.map(item => item.year)
 
+  const yearList = {}
+  arr.forEach(item => {
+    if (item.year) {
+      if (yearList[item.year]) yearList[item.year]++ // keep a record of year count in case we want it later
+      else yearList[item.year] = 1
+    }
+  })
+  return Object.keys(yearList)
+
+}
 
 // ------COMBINED------
 
