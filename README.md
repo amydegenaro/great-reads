@@ -14,6 +14,7 @@ Due to time contraints, there were a few features that I was unable to implement
 
 - [ ] Refactor to use React Router
 - [ ] Add a "Search by Author" option
+- [ ] Add additional filters and book details
 - [ ] Paginate search results
 - [ ] Toggle sort order upon button re-click
 - [ ] Write tests, especially for Express routes
