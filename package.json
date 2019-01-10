@@ -8,7 +8,7 @@
     "bundle-add": "git add -A -f public/bundle.js public/bundle.js.map",
     "bundle-cm": "git cm 'Deploying'",
     "deploy": "npm run bundle-add && npm run bundle-cm && npm run heroku",
-    "heroku": "git push heroku master",
+    "heroku": "git push -f heroku master",
     "start": "node server",
     "start-dev": "NODE_ENV='development' npm run build-watch & npm run start-server",
     "start-server": "nodemon server -e html,js,scss --ignore public --ignore client",
