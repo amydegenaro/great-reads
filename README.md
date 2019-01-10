@@ -25,7 +25,7 @@ GreatReads was built using HTML, CSS, React, Redux, Node, Express, and the Open 
 
 ## Set-Up & Installation
 
-Fork and/or clone this repository and install dependencies with `npm install`. Start a local development environment with `npm run start-dev`.
+Fork and/or clone this repository and install dependencies with `npm install`. Start a local development environment with `npm run start-dev` and navigate to `http://localhost:8080/`.
 
 ## Developed by
 
