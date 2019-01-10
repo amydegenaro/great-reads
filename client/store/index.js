@@ -6,7 +6,7 @@ import axios from 'axios'
 // INITIAL STORE STATE
 const initialState = {
   searchResults: [],
-  foundResults: true,
+  foundResults: null,
   selectedBook: {},
   loading: false
 }
@@ -28,9 +28,10 @@ const noResultsFound = () => ({
   type: NO_RESULTS_FOUND
 })
 
-const gotBookDetails = details => ({
+const gotBookDetails = (details, description) => ({
   type: GOT_BOOK_DETAILS,
-  details
+  details,
+  description
 })
 
 const removedResults = () => ({
@@ -58,8 +59,9 @@ export const getResultsByTitle = search => async dispatch => {
 export const getBookDetails = book => async dispatch => {
   try {
     const {openLibID, worksID} = book
-    const {data} = await axios.post('/api/book/', {openLibID, worksID})
-    dispatch(gotBookDetails(data))
+    const bookRes = await axios.post('/api/book/', {openLibID})
+    const descriptionRes = await axios.post('/api/book/description', {worksID})
+    dispatch(gotBookDetails(bookRes.data, descriptionRes.data))
   } catch (err) {
     console.error(err)
   }
@@ -100,13 +102,17 @@ const reducer = (state = initialState, action) => {
     case GOT_BOOK_DETAILS:
       return {
         ...state,
-        selectedBook: action.details,
+        selectedBook: {...action.details, description: action.description},
         loading: false
       }
     case REMOVED_RESULTS:
       return initialState
     case DATA_LOADING:
-      return {...state, loading: true}
+      return {
+        ...state,
+        loading: true,
+        foundResults: null
+      }
     default:
       return state
   }

@@ -10,6 +10,14 @@ const Home = props => {
         handleSubmit={props.handleSubmit}
         title={props.title}
       />
+      {
+        props.foundResults === false &&
+          <p className="home-subtext">No books found, try again.</p>
+      }
+      {
+        props.loading &&
+          <p className="home-subtext">Searching the shelves...</p>
+      }
     </div>
   )
 }

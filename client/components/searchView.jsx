@@ -24,7 +24,7 @@ const SearchView = props => {
             :
             <div>
               {
-                props.foundResults ?
+                props.foundResults !== false ?
                 <SearchResults
                   results={filterAndSort(props.results, props.state)}
                   selectBook={props.selectBook}

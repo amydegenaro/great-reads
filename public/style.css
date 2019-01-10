@@ -37,6 +37,15 @@ h1, h2, h3 {
   font-family: 'Prospectus Pro XL Bold';
 }
 
+.home-subtext {
+  font-size: 3rem;
+  padding: 1rem;
+}
+
+.header-title {
+  cursor: pointer;
+}
+
 .search-form {
   display: flex;
   width: 35rem;

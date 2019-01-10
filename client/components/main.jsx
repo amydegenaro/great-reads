@@ -81,16 +81,18 @@ class Main extends React.Component {
       <div>
         {
           // show the home landing page if there are no search results
-          // this.props.results.length === 0 ?
-          // <Home
-          //   handleChange={this.handleChange}
-          //   handleSubmit={this.handleSubmit}
-          //   title={this.state.title}
-          // />
-          // :
+          this.props.results.length === 0 ?
+          <Home
+            handleChange={this.handleChange}
+            handleSubmit={this.handleSubmit}
+            title={this.state.title}
+            loading={this.props.loading}
+            foundResults={this.props.foundResults}
+          />
+          :
           <div>
             <div id="header">
-              <h2 onClick={this.clearSearchResults} >GreatReads.</h2>
+              <h2 onClick={this.clearSearchResults} className="header-title" >GreatReads.</h2>
               <SearchBox
                 handleChange={this.handleChange}
                 handleSubmit={this.handleSubmit}
