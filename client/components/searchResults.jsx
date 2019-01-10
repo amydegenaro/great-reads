@@ -8,7 +8,7 @@ const SearchResults = props => {
           return (
             <div key={idx} className="single-result">
               <h4 className="result-title" onClick={() => props.selectBook(result)}>{result.title}</h4>
-              <p>by {result.author}</p>
+              <h4>by {result.author}</h4>
               <p>First published in {result.year}</p>
               <p>Editions: {result.editions}</p>
             </div>

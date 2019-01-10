@@ -90,6 +90,13 @@ h1, h2, h3 {
   border: solid #8b3a52 .1rem;
 }
 
+.btn-back {
+  font-family: 'Prospectus Pro S Thin';
+  height: 2.5rem;
+  width: 11rem;
+  font-size: 1.4rem;
+}
+
 .single-result {
   margin-bottom: 2rem;
   border: solid #f0f0f0 .3rem;
@@ -99,6 +106,32 @@ h1, h2, h3 {
 .result-title {
   color: #057692;
   cursor: pointer;
+  font-size: 1.7rem;
+}
+
+.book-wrapper {
+  display: flex;
+  margin-top: 3rem;
+}
+
+.cover-art {
+  flex: 1 0 0;
+  min-height: 50rem;
+}
+
+.book-details {
+  flex: 2 0 0;
+  display: flex;
+  flex-direction: column;
+  padding-left: 2rem;
+}
+
+.book-description {
+  margin-top: 1rem;
+}
+
+.metadata {
+  color: #929292;
 }
 
 #home, #header {
@@ -175,6 +208,16 @@ h1, h2, h3 {
   padding-left: 4rem;
 }
 
+/* Single Book View */
+
+#book-view {
+  display: flex;
+  flex-direction: column;
+  border: solid #f0f0f0 .3rem;
+  padding: 3rem;
+  background-color: #fff;
+}
+
 /* Media Queries */
 
 @media screen and (max-width: 850px) {
@@ -201,4 +244,21 @@ h1, h2, h3 {
     border-left: none;
     padding: 2rem 0 0 0;
   }
+
+  .book-wrapper {
+    flex-direction: column;
+  }
+
+  .cover-art {
+    flex: none;
+    align-self: center;
+    min-height: auto;
+    width: 60%;
+  }
+
+  .book-details {
+    flex: none;
+    padding-top: 2rem;
+  }
+
 }
