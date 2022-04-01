@@ -2,7 +2,13 @@
   "name": "great-reads",
   "version": "1.0.0",
   "description": "AMEX Code Challenge",
+  "author": "Amy De Genaro",
+  "license": "ISC",
   "main": "index.js",
+  "engines": {
+    "node": "12.x",
+    "npm": "6.x"
+  },
   "scripts": {
     "build-watch": "webpack -w",
     "bundle-add": "git add -A -f public/bundle.js public/bundle.js.map",
@@ -18,8 +24,6 @@
     "type": "git",
     "url": "git+https://github.com/amydegenaro/great-reads.git"
   },
-  "author": "Amy De Genaro",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/amydegenaro/great-reads/issues"
   },
