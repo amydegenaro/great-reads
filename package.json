@@ -1,7 +1,7 @@
 {
   "name": "great-reads",
   "version": "1.0.0",
-  "description": "AMEX Code Challenge",
+  "description": "Search for books using Open Library API",
   "author": "Amy De Genaro",
   "license": "ISC",
   "main": "index.js",
@@ -10,12 +10,9 @@
     "npm": "8.x"
   },
   "scripts": {
+    "build": "webpack --mode production",
     "build-watch": "webpack -w",
-    "bundle-add": "git checkout -b deploy && git add -A -f public/bundle.js public/bundle.js.map",
-    "bundle-cm": "git cm 'Deploying'",
-    "cleanup": "git checkout main && git branch -D deploy",
-    "deploy": "npm run bundle-add && npm run bundle-cm && npm run heroku && npm run cleanup",
-    "heroku": "git push -f heroku main",
+    "deploy": "script/deploy",
     "lint": "eslint ./client ./server",
     "start": "node server",
     "start-dev": "NODE_ENV='development' npm run build-watch & npm run start-server",
@@ -42,6 +39,7 @@
     "react-redux": "^7.2.8",
     "react-router-dom": "^6.3.0",
     "redux": "^4.1.2",
+    "redux-logger": "^3.0.6",
     "redux-thunk": "^2.4.1"
   },
   "devDependencies": {
@@ -50,8 +48,14 @@
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-react": "^7.16.7",
     "babel-loader": "^8.2.4",
+    "eslint": "^8.12.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.29.4",
+    "eslint-plugin-react-hooks": "^4.4.0",
     "nodemon": "^2.0.15",
-    "redux-logger": "^3.0.6",
     "webpack": "^5.71.0",
     "webpack-cli": "^4.9.2"
   }

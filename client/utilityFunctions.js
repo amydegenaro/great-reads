@@ -51,23 +51,23 @@ export function generateTagList(arr) {
   arr.forEach((item) => {
     if (item.tags) {
       item.tags.forEach((tag) => {
-        if (tagList[tag])
-          tagList[tag]++; // keep a record of tag count in case we want it later
+        // keep a record of tag count in case we want it later
+        if (tagList[tag]) tagList[tag] += 1;
         else tagList[tag] = 1;
       });
     }
   });
   return Object.keys(tagList).sort((a, b) => {
     // sort tag list alphabetically
-    a = a.toLowerCase();
-    b = b.toLowerCase();
-    if (a > b) {
+    const formattedA = a.toLowerCase();
+    const formattedB = b.toLowerCase();
+    if (formattedA > formattedB) {
       return 1;
-    } else if (a < b) {
-      return -1;
-    } else if (a === b) {
-      return 0;
     }
+    if (formattedA < formattedB) {
+      return -1;
+    }
+    return 0;
   });
 }
 
@@ -93,10 +93,8 @@ export function generateYearList(arr) {
   const yearList = {};
   arr.forEach((item) => {
     if (item.year) {
-      if (yearList[item.year])
-        yearList[
-          item.year
-        ]++; // keep a record of year count in case we want it later
+      if (yearList[item.year]) yearList[item.year] += 1;
+      // keep a record of year count in case we want it later
       else yearList[item.year] = 1;
     }
   });

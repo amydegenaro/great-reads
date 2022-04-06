@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+set -e
+
+function cleanup_at_exit {
+  git checkout main
+  git branch -D deploy
+}
+trap cleanup_at_exit EXIT
+
+git checkout -b deploy
+
+webpack --mode production
+
+git add -f public/bundle.js public/bundle.js.map
+
+git commit --allow-empty -m 'Deploying'
+
+git push --f heroku main
