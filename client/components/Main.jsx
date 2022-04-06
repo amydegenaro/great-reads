@@ -8,13 +8,13 @@ import {
 } from '../store';
 
 import SearchBox from './SearchBox';
-import SearchView from './searchView';
-import BookView from './bookView';
-import Home from './home';
+import SearchView from './SearchView';
+import BookView from './BookView';
+import Home from './Home';
 
 class Main extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       // search query, selected sort value, and selected filters
       title: '',
@@ -24,13 +24,6 @@ class Main extends React.Component {
       year: 'All',
       bookSelected: false,
     };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleSort = this.handleSort.bind(this);
-    this.clearFilters = this.clearFilters.bind(this);
-    this.selectBook = this.selectBook.bind(this);
-    this.unselectBook = this.unselectBook.bind(this);
-    this.clearSearchResults = this.clearSearchResults.bind(this);
   }
 
   handleChange(evt) {

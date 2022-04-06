@@ -12,7 +12,8 @@ router.post('/', async (req, res, next) => {
 
     const dataOLID = data[`OLID:${OLID}`];
     const bookInfo = {
-      // isbn: dataOLID.identifiers.isbn_13[0] || dataOLID.identifiers.isbn_10[0], // removed due to inconsistencies in returned data
+      // removed due to inconsistencies in returned data
+      // isbn: dataOLID.identifiers.isbn_13[0] || dataOLID.identifiers.isbn_10[0],
       title: dataOLID.title,
       url: dataOLID.url,
       cover: dataOLID.cover.large || '/images/cover_placeholder.jpg',

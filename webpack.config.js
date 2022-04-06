@@ -1,18 +1,15 @@
-const isDev = process.env.NODE_ENV === 'development'
-const path = require('path')
+const isDev = process.env.NODE_ENV === 'development';
+const path = require('path');
 
 module.exports = {
   mode: isDev ? 'development' : 'production',
-  entry: [
-    '@babel/polyfill',
-    './client/app.jsx'
-  ],
+  entry: ['@babel/polyfill', './client/App.jsx'],
   output: {
     path: path.join(__dirname, '/public'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
   },
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx'],
   },
   devtool: 'source-map',
   module: {
@@ -20,8 +17,8 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        loader: 'babel-loader'
-      }
-    ]
-  }
-}
+        loader: 'babel-loader',
+      },
+    ],
+  },
+};

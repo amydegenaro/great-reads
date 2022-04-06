@@ -10,10 +10,10 @@
     "npm": "8.x"
   },
   "scripts": {
-    "build": "webpack --mode production",
+    "build": "webpack",
     "build-watch": "webpack -w",
     "deploy": "script/deploy",
-    "lint": "eslint ./client ./server",
+    "lint": "eslint ./ --ignore-path .gitignore",
     "start": "node server",
     "start-dev": "NODE_ENV='development' npm run build-watch & npm run start-server",
     "start-server": "nodemon server -e html,js,scss --ignore public --ignore client",
@@ -34,6 +34,7 @@
     "axios": "^0.26.1",
     "express": "^4.17.3",
     "morgan": "^1.10.0",
+    "prop-types": "^15.8.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.8",

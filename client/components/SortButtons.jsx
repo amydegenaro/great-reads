@@ -1,10 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const SortButtons = (props) => {
-  let relevanceClass, yearClass, editionsClass;
+const SortButtons = ({ handleSort, sort }) => {
+  let relevanceClass;
+  let yearClass;
+  let editionsClass;
 
   // quick fix to toggle conditional class names using a single state field
-  switch (props.sort) {
+  switch (sort) {
     case 'relevance':
       relevanceClass = 'btn btn-active';
       yearClass = 'btn btn-sort';
@@ -31,7 +34,7 @@ const SortButtons = (props) => {
         type="button"
         className={relevanceClass}
         name="relevance"
-        onClick={props.handleSort}
+        onClick={handleSort}
       >
         Relevance
       </button>
@@ -39,7 +42,7 @@ const SortButtons = (props) => {
         type="button"
         className={yearClass}
         name="year"
-        onClick={props.handleSort}
+        onClick={handleSort}
       >
         Year Published
       </button>
@@ -47,12 +50,17 @@ const SortButtons = (props) => {
         type="button"
         className={editionsClass}
         name="editions"
-        onClick={props.handleSort}
+        onClick={handleSort}
       >
         Most Editions
       </button>
     </div>
   );
+};
+
+SortButtons.propTypes = {
+  handleSort: PropTypes.func.isRequired,
+  sort: PropTypes.string.isRequired,
 };
 
 export default SortButtons;
