@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
   getResultsByTitle,
@@ -12,123 +13,128 @@ import SearchView from './SearchView';
 import BookView from './BookView';
 import Home from './Home';
 
-class Main extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      // search query, selected sort value, and selected filters
-      title: '',
-      sort: '',
-      author: 'All',
-      tags: 'All',
-      year: 'All',
-      bookSelected: false,
-    };
-  }
+const Main = ({
+  details,
+  foundResults,
+  getBookDetails,
+  getResultsByTitle,
+  loading,
+  removeResults,
+  results,
+  showLoading,
+}) => {
+  // search query, selected sort value, and selected filters
+  const [title, setTitle] = useState('');
+  const [sort, setSort] = useState('');
+  const [author, setAuthor] = useState('All');
+  const [tags, setTags] = useState('All');
+  const [year, setYear] = useState('All');
+  const [bookSelected, setBookSelected] = useState(false);
 
-  handleChange(evt) {
-    this.setState({
-      [evt.target.name]: evt.target.value,
-    });
-  }
+  const handleSearch = (evt) => setTitle(evt.target.value);
+  const handleAuthorFilter = (evt) => setAuthor(evt.target.value);
+  const handleTagsFilter = (evt) => setTags(evt.target.value);
+  const handleYearFilter = (evt) => setYear(evt.target.value);
+  const handleSort = (evt) => setSort(evt.target.name)
 
-  async handleSubmit(evt) {
+  const handleSubmit = async (evt) => {
     evt.preventDefault();
-    this.props.showLoading();
-    await this.props.getResultsByTitle(this.state.title);
-    this.setState({
-      sort: 'relevance',
-      bookSelected: false,
-    });
+    showLoading();
+    await getResultsByTitle(title);
+    setSort('relevance');
+    setBookSelected(false);
   }
 
-  handleSort(evt) {
-    this.setState({
-      sort: evt.target.name,
-    });
+  const clearFilters = () => {
+    setAuthor('All');
+    setTags('All');
+    setYear('All');
   }
 
-  clearFilters() {
-    this.setState({
-      author: 'All',
-      tags: 'All',
-      year: 'All',
-    });
+  const selectBook = async (book) => {
+    showLoading();
+    await getBookDetails(book);
+    setBookSelected(true);
   }
 
-  async selectBook(book) {
-    this.props.showLoading();
-    await this.props.getBookDetails(book);
-    this.setState({
-      bookSelected: true,
-    });
+  const unselectBook = () => {
+    setBookSelected(false);
   }
 
-  unselectBook() {
-    this.setState({
-      bookSelected: false,
-    });
+  const clearSearchResults = () => {
+    removeResults();
   }
 
-  clearSearchResults() {
-    this.props.removeResults();
-  }
-
-  render() {
-    return (
-      <div>
-        {
-          // show the home landing page if there are no search results
-          this.props.results.length === 0 ? (
-            <Home
-              handleChange={this.handleChange}
-              handleSubmit={this.handleSubmit}
-              title={this.state.title}
-              loading={this.props.loading}
-              foundResults={this.props.foundResults}
-            />
-          ) : (
-            <div>
-              <div id="header">
-                <h2 onClick={this.clearSearchResults} className="header-title">
-                  GreatReads.
-                </h2>
-                <SearchBox
-                  handleChange={this.handleChange}
-                  handleSubmit={this.handleSubmit}
-                  title={this.state.title}
-                />
-              </div>
-              <div id="content">
-                {
-                  // show the single book view if a search result has been cicked
-                  // otherwise, show the search results
-                  this.state.bookSelected ? (
-                    <BookView
-                      unselectBook={this.unselectBook}
-                      details={this.props.details}
-                    />
-                  ) : (
-                    <SearchView
-                      handleChange={this.handleChange}
-                      handleSort={this.handleSort}
-                      clearFilters={this.clearFilters}
-                      selectBook={this.selectBook}
-                      results={this.props.results}
-                      foundResults={this.props.foundResults}
-                      loading={this.props.loading}
-                      state={this.state}
-                    />
-                  )
-                }
-              </div>
+  return (
+    <div>
+      {
+        // show the home landing page if there are no search results
+        results.length === 0 ? (
+          <Home
+            handleSearch={handleSearch}
+            handleSubmit={handleSubmit}
+            title={title}
+            loading={loading}
+            foundResults={foundResults}
+          />
+        ) : (
+          <div>
+            <div id="header">
+              <h2 onClick={clearSearchResults} className="header-title">
+                GreatReads.
+              </h2>
+              <SearchBox
+                handleSearch={handleSearch}
+                handleSubmit={handleSubmit}
+                title={title}
+              />
             </div>
-          )
-        }
-      </div>
-    );
-  }
+            <div id="content">
+              {
+                // show the single book view if a search result has been cicked
+                // otherwise, show the search results
+                bookSelected ? (
+                  <BookView
+                    unselectBook={unselectBook}
+                    details={details}
+                  />
+                ) : (
+                  <SearchView
+                    handleAuthorFilter={handleAuthorFilter}
+                    handleTagsFilter={handleTagsFilter}
+                    handleYearFilter={handleYearFilter}
+                    handleSort={handleSort}
+                    clearFilters={clearFilters}
+                    selectBook={selectBook}
+                    results={results}
+                    foundResults={foundResults}
+                    loading={loading}
+                    filters={{ sort, author, tags, year }}
+                  />
+                )
+              }
+            </div>
+          </div>
+        )
+      }
+    </div>
+  );
 }
+
+Main.propTypes = {
+  details: PropTypes.shape({}).isRequired,
+  foundResults: PropTypes.bool,
+  getBookDetails: PropTypes.func.isRequired,
+  getResultsByTitle: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
+  removeResults: PropTypes.func.isRequired,
+  results: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  showLoading: PropTypes.func.isRequired,
+};
+
+Main.defaultProps = {
+  foundResults: null,
+};
 
 const mapState = (state) => ({
   results: state.searchResults,

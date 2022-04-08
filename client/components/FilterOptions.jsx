@@ -9,7 +9,9 @@ import {
 const FilterOptions = ({
   author,
   clearFilters,
-  handleChange,
+  handleAuthorFilter,
+  handleTagsFilter,
+  handleYearFilter,
   results,
   tags,
   year,
@@ -21,17 +23,17 @@ const FilterOptions = ({
   return (
     <form id="filters">
       <label name="author">Author</label>
-      <select name="author" onChange={handleChange} value={author}>
+      <select name="author" onChange={handleAuthorFilter} value={author}>
         <option value="All">All</option>
         {authorList.map((authorName, idx) => (
           <option key={`author-${idx}`} value={authorName}>
-            {author}
+            {authorName}
           </option>
         ))}
       </select>
 
       <label name="tags">Tags</label>
-      <select name="tags" onChange={handleChange} value={tags}>
+      <select name="tags" onChange={handleTagsFilter} value={tags}>
         <option value="All">All</option>
         {tagList.map((tag, idx) => (
           <option key={`tag-${idx}`} value={tag}>
@@ -41,11 +43,11 @@ const FilterOptions = ({
       </select>
 
       <label name="year">Year Published</label>
-      <select name="year" onChange={handleChange} value={year}>
+      <select name="year" onChange={handleYearFilter} value={year}>
         <option value="All">All</option>
         {yearList.map((bookYear, idx) => (
           <option key={`year-${idx}`} value={bookYear}>
-            {year}
+            {bookYear}
           </option>
         ))}
       </select>
@@ -58,11 +60,13 @@ const FilterOptions = ({
 };
 
 FilterOptions.propTypes = {
-  author: PropTypes.arrayOf(PropTypes.string).isRequired,
+  author: PropTypes.string.isRequired,
   clearFilters: PropTypes.func.isRequired,
-  handleChange: PropTypes.func.isRequired,
+  handleAuthorFilter: PropTypes.func.isRequired,
+  handleTagsFilter: PropTypes.func.isRequired,
+  handleYearFilter: PropTypes.func.isRequired,
   results: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  tags: PropTypes.arrayOf(PropTypes.string).isRequired,
+  tags: PropTypes.string.isRequired,
   year: PropTypes.string.isRequired,
 };
 

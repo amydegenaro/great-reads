@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import SearchBox from './SearchBox';
 
-const Home = ({ foundResults, handleChange, handleSubmit, loading, title }) => (
+const Home = ({ foundResults, handleSearch, handleSubmit, loading, title }) => (
   <div id="home">
     <h2>GreatReads.</h2>
     <SearchBox
-      handleChange={handleChange}
+      handleSearch={handleSearch}
       handleSubmit={handleSubmit}
       title={title}
     />
@@ -18,11 +18,15 @@ const Home = ({ foundResults, handleChange, handleSubmit, loading, title }) => (
 );
 
 Home.propTypes = {
-  foundResults: PropTypes.bool.isRequired,
-  handleChange: PropTypes.func.isRequired,
+  foundResults: PropTypes.bool,
+  handleSearch: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
   title: PropTypes.string.isRequired,
+};
+
+Home.defaultProps = {
+  foundResults: null,
 };
 
 export default Home;

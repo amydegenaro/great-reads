@@ -9,31 +9,35 @@ import SearchResults from './SearchResults';
 const SearchView = ({
   clearFilters,
   foundResults,
-  handleChange,
+  handleAuthorFilter,
+  handleTagsFilter,
+  handleYearFilter,
   handleSort,
   loading,
   results,
   selectBook,
-  state,
+  filters,
 }) => (
   <div id="search">
     <FilterOptions
-      handleChange={handleChange}
+      handleAuthorFilter={handleAuthorFilter}
+      handleTagsFilter={handleTagsFilter}
+      handleYearFilter={handleYearFilter}
       clearFilters={clearFilters}
       results={results}
-      author={state.author}
-      tags={state.tags}
-      year={state.year}
+      author={filters.author}
+      tags={filters.tags}
+      year={filters.year}
     />
     <div id="main">
-      <SortButtons handleSort={handleSort} sort={state.sort} />
+      <SortButtons handleSort={handleSort} sort={filters.sort} />
       {loading ? (
         <p>Loading, please wait...</p>
       ) : (
         <div>
           {foundResults !== false ? (
             <SearchResults
-              results={filterAndSort(results, state)}
+              results={filterAndSort(results, filters)}
               selectBook={selectBook}
             />
           ) : (
@@ -48,15 +52,17 @@ const SearchView = ({
 SearchView.propTypes = {
   clearFilters: PropTypes.func.isRequired,
   foundResults: PropTypes.bool.isRequired,
-  handleChange: PropTypes.func.isRequired,
+  handleAuthorFilter: PropTypes.func.isRequired,
+  handleTagsFilter: PropTypes.func.isRequired,
+  handleYearFilter: PropTypes.func.isRequired,
   handleSort: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
   results: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   selectBook: PropTypes.func.isRequired,
-  state: PropTypes.shape({
-    author: PropTypes.arrayOf(PropTypes.string).isRequired,
+  filters: PropTypes.shape({
+    author: PropTypes.string.isRequired,
     sort: PropTypes.string.isRequired,
-    tags: PropTypes.arrayOf(PropTypes.string).isRequired,
+    tags: PropTypes.string.isRequired,
     year: PropTypes.string.isRequired,
   }).isRequired,
 };

@@ -32,16 +32,16 @@ export function sortResults(arr, sortValue) {
 
 // ------FILTER FUNCTIONS------
 
-export function filterResults(arr, state) {
+export function filterResults(arr, filters) {
   return arr
     .filter((item) =>
-      state.author !== 'All' ? item.author.includes(state.author) : true
+      filters.author !== 'All' ? item.author.includes(filters.author) : true
     )
     .filter((item) =>
-      state.tags !== 'All' ? item.tags.includes(state.tags) : true
+      filters.tags !== 'All' ? item.tags.includes(filters.tags) : true
     )
     .filter((item) =>
-      state.year !== 'All' ? item.year === Number(state.year) : true
+      filters.year !== 'All' ? item.year === Number(filters.year) : true
     );
 }
 
@@ -103,6 +103,6 @@ export function generateYearList(arr) {
 
 // ------COMBINED------
 
-export function filterAndSort(arr, state) {
-  return sortResults(filterResults(arr, state), state.sort);
+export function filterAndSort(arr, filters) {
+  return sortResults(filterResults(arr, filters), filters.sort);
 }
