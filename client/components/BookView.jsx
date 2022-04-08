@@ -2,8 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const BookView = ({
-  cover,
-  details: { author, date, description, title, pages },
+  details: {
+    author,
+    cover,
+    date,
+    description,
+    title,
+    pages,
+  },
   unselectBook,
 }) => (
   <div id="book-view">
@@ -33,9 +39,9 @@ const BookView = ({
 );
 
 BookView.propTypes = {
-  cover: PropTypes.string.isRequired,
   details: PropTypes.shape({
     author: PropTypes.string.isRequired,
+    cover: PropTypes.string.isRequired,
     date: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
