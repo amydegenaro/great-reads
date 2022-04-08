@@ -1,4 +1,5 @@
 import React from 'react'
+import { Box, Container } from '@mui/material';
 import {filterAndSort} from '../utilityFunctions'
 
 import SortButtons from './SortButtons'
@@ -25,7 +26,7 @@ const SearchView = props => {
             props.loading ?
             <p>Loading, please wait...</p>
             :
-            <div>
+            <Container>
               {
                 props.foundResults !== false ?
                 <SearchResults
@@ -35,7 +36,7 @@ const SearchView = props => {
                 :
                 <p>No books found!</p>
               }
-            </div>
+            </Container>
           }
       </div>
     </div>

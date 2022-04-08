@@ -1,4 +1,5 @@
 node_modules
 public/bundle.js*
+public/*.otf
 secrets.js
 .DS_Store

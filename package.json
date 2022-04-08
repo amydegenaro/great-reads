@@ -6,8 +6,8 @@
   "license": "ISC",
   "main": "index.js",
   "engines": {
-    "node": "12.x",
-    "npm": "6.x"
+    "node": "16.x",
+    "npm": "8.x"
   },
   "scripts": {
     "build-watch": "webpack -w",
@@ -48,6 +48,7 @@
     "@babel/preset-env": "^7.2.3",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.4",
+    "file-loader": "^6.2.0",
     "nodemon": "^2.0.15",
     "redux-logger": "^3.0.6",
     "webpack": "^5.70.0",
