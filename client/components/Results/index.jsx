@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { filterAndSort } from '../utilityFunctions';
+import { filterAndSort } from './utilityFunctions';
 
 import SortButtons from './SortButtons';
 import FilterOptions from './FilterOptions';
-import SearchResults from './SearchResults';
+import ResultsList from './ResultsList';
 
-const SearchView = ({
+const ResultsView = ({
   clearFilters,
   foundResults,
   handleAuthorFilter,
@@ -36,7 +36,7 @@ const SearchView = ({
       ) : (
         <div>
           {foundResults !== false ? (
-            <SearchResults
+            <ResultsList
               results={filterAndSort(results, filters)}
               selectBook={selectBook}
             />
@@ -49,7 +49,7 @@ const SearchView = ({
   </div>
 );
 
-SearchView.propTypes = {
+ResultsView.propTypes = {
   clearFilters: PropTypes.func.isRequired,
   foundResults: PropTypes.bool.isRequired,
   handleAuthorFilter: PropTypes.func.isRequired,
@@ -67,4 +67,4 @@ SearchView.propTypes = {
   }).isRequired,
 };
 
-export default SearchView;
+export default ResultsView;

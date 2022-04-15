@@ -12,7 +12,7 @@ In building GreatReads, I wanted to write only one 'stateful' class component co
 
 Due to time constraints, there were a few features that I was unable to implement in GreatReads. Further work on this app would include:
 
-- [ ] Refactor to use React Router
+- [x] Refactor to use React Router
 - [ ] Add a "Search by Author" option
 - [ ] Add additional filters and book details
 - [ ] Paginate search results

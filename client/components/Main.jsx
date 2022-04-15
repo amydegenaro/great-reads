@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import {
   getResultsByTitle,
   getBookDetails,
@@ -8,8 +9,8 @@ import {
   showLoading,
 } from '../store';
 
-import SearchBox from './SearchBox';
-import SearchView from './SearchView';
+import Header from './Header';
+import ResultsView from './Results';
 import BookView from './BookView';
 import Home from './Home';
 
@@ -29,47 +30,44 @@ const Main = ({
   const [author, setAuthor] = useState('All');
   const [tags, setTags] = useState('All');
   const [year, setYear] = useState('All');
-  const [bookSelected, setBookSelected] = useState(false);
+  const navigate = useNavigate();
 
   const handleSearch = (evt) => setTitle(evt.target.value);
   const handleAuthorFilter = (evt) => setAuthor(evt.target.value);
   const handleTagsFilter = (evt) => setTags(evt.target.value);
   const handleYearFilter = (evt) => setYear(evt.target.value);
-  const handleSort = (evt) => setSort(evt.target.name)
+  const handleSort = (evt) => setSort(evt.target.name);
 
   const handleSubmit = async (evt) => {
     evt.preventDefault();
     showLoading();
     await getResultsByTitle(title);
     setSort('relevance');
-    setBookSelected(false);
-  }
+    navigate('/results');
+  };
 
   const clearFilters = () => {
     setAuthor('All');
     setTags('All');
     setYear('All');
-  }
+  };
 
   const selectBook = async (book) => {
     showLoading();
     await getBookDetails(book);
-    setBookSelected(true);
-  }
-
-  const unselectBook = () => {
-    setBookSelected(false);
-  }
+    navigate('/book');
+  };
 
   const clearSearchResults = () => {
     removeResults();
-  }
+    setTitle('');
+  };
 
   return (
-    <div>
-      {
-        // show the home landing page if there are no search results
-        results.length === 0 ? (
+    <Routes>
+      <Route
+        path="/"
+        element={
           <Home
             handleSearch={handleSearch}
             handleSubmit={handleSubmit}
@@ -77,49 +75,44 @@ const Main = ({
             loading={loading}
             foundResults={foundResults}
           />
-        ) : (
-          <div>
-            <div id="header">
-              <h2 onClick={clearSearchResults} className="header-title">
-                GreatReads.
-              </h2>
-              <SearchBox
-                handleSearch={handleSearch}
-                handleSubmit={handleSubmit}
-                title={title}
-              />
-            </div>
-            <div id="content">
-              {
-                // show the single book view if a search result has been cicked
-                // otherwise, show the search results
-                bookSelected ? (
-                  <BookView
-                    unselectBook={unselectBook}
-                    details={details}
-                  />
-                ) : (
-                  <SearchView
-                    handleAuthorFilter={handleAuthorFilter}
-                    handleTagsFilter={handleTagsFilter}
-                    handleYearFilter={handleYearFilter}
-                    handleSort={handleSort}
-                    clearFilters={clearFilters}
-                    selectBook={selectBook}
-                    results={results}
-                    foundResults={foundResults}
-                    loading={loading}
-                    filters={{ sort, author, tags, year }}
-                  />
-                )
-              }
-            </div>
-          </div>
-        )
-      }
-    </div>
+        }
+      />
+      <Route
+        path="/"
+        element={
+          <Header
+            clearSearchResults={clearSearchResults}
+            handleSearch={handleSearch}
+            handleSubmit={handleSubmit}
+            title={title}
+          />
+        }
+      >
+        <Route
+          path="results"
+          element={
+            <ResultsView
+              handleAuthorFilter={handleAuthorFilter}
+              handleTagsFilter={handleTagsFilter}
+              handleYearFilter={handleYearFilter}
+              handleSort={handleSort}
+              clearFilters={clearFilters}
+              selectBook={selectBook}
+              results={results}
+              foundResults={foundResults}
+              loading={loading}
+              filters={{ sort, author, tags, year }}
+            />
+          }
+        />
+        <Route
+          path="book"
+          element={<BookView details={details} />}
+        />
+      </Route>
+    </Routes>
   );
-}
+};
 
 Main.propTypes = {
   details: PropTypes.shape({}).isRequired,

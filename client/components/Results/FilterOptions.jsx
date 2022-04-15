@@ -4,7 +4,7 @@ import {
   generateTagList,
   generateAuthorList,
   generateYearList,
-} from '../utilityFunctions';
+} from './utilityFunctions';
 
 const FilterOptions = ({
   author,

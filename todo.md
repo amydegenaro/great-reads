@@ -1,7 +1,5 @@
 ## To Do List
 
-- Reorg folders
-- Convert to React Hooks
 - Add unit tests
 - Try typescript
 - Other refactoring improvements
