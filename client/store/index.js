@@ -45,7 +45,7 @@ const dataLoading = () => ({
 // THUNK CREATORS
 export const getResultsByTitle = (search) => async (dispatch) => {
   try {
-    const { data } = await axios.post('/api/search/title', { search });
+    const { data } = await axios.post('/.netlify/functions/index/api/search/title', { search });
     if (data.length === 0) {
       dispatch(noResultsFound());
     } else {
@@ -59,8 +59,8 @@ export const getResultsByTitle = (search) => async (dispatch) => {
 export const getBookDetails = (book) => async (dispatch) => {
   try {
     const { openLibID, worksID } = book;
-    const bookRes = await axios.post('/api/book/', { openLibID });
-    const descriptionRes = await axios.post('/api/book/description', {
+    const bookRes = await axios.post('/.netlify/functions/index/api/book/', { openLibID });
+    const descriptionRes = await axios.post('/.netlify/functions/index/api/book/description', {
       worksID,
     });
     dispatch(gotBookDetails(bookRes.data, descriptionRes.data));

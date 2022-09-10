@@ -11,6 +11,7 @@
   },
   "scripts": {
     "build": "webpack",
+    "build-netlify": "netlify-lambda build server",
     "build-watch": "webpack -w",
     "deploy": "script/deploy",
     "lint": "eslint ./ --ignore-path .gitignore",
@@ -28,12 +29,14 @@
   },
   "homepage": "https://github.com/amydegenaro/great-reads#readme",
   "dependencies": {
+    "@babel/polyfill": "^7.12.1",
     "@emotion/react": "^11.8.2",
     "@emotion/styled": "^11.8.1",
     "@mui/material": "^5.5.3",
     "axios": "^0.26.1",
     "express": "^4.17.3",
     "morgan": "^1.10.0",
+    "netlify-lambda": "^2.0.15",
     "prop-types": "^15.8.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -41,11 +44,11 @@
     "react-router-dom": "^6.3.0",
     "redux": "^4.1.2",
     "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.4.1"
+    "redux-thunk": "^2.4.1",
+    "serverless-http": "^3.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.17.8",
-    "@babel/polyfill": "^7.12.1",
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-react": "^7.16.7",
     "babel-loader": "^8.2.4",

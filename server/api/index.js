@@ -1,7 +1,5 @@
 const router = require('express').Router();
 
-module.exports = router;
-
 router.use('/book', require('./book'));
 router.use('/search', require('./search'));
 
@@ -10,3 +8,5 @@ router.use((req, res, next) => {
   error.status = 404;
   next(error);
 });
+
+module.exports = router;

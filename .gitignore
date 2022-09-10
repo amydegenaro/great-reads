@@ -2,3 +2,7 @@ node_modules
 public/bundle.js*
 secrets.js
 .DS_Store
+
+# Local Netlify folder
+.netlify
+functions/
