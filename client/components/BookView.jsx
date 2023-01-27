@@ -3,16 +3,21 @@ import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 
 const BookView = ({
+  clearSelectedBook,
   details: { author, cover, date, description, title, pages },
 }) => {
   const navigate = useNavigate();
+  const handleBackToResults = () => {
+    clearSelectedBook();
+    navigate('/results');
+  }
 
   return (
     <div id="book-view">
       <button
         type="button"
         className="btn btn-back"
-        onClick={() => navigate('/results')}
+        onClick={handleBackToResults}
       >
         Back to results
       </button>
@@ -40,6 +45,7 @@ const BookView = ({
 };
 
 BookView.propTypes = {
+  clearSelectedBook: PropTypes.func.isRequired,
   details: PropTypes.shape({
     author: PropTypes.string.isRequired,
     cover: PropTypes.string.isRequired,

@@ -16,6 +16,7 @@ const GOT_RESULTS_BY_TITLE = 'GOT_RESULTS_BY_TITLE';
 const NO_RESULTS_FOUND = 'NO_RESULTS_FOUND';
 const GOT_BOOK_DETAILS = 'GOT_BOOK_DETAILS';
 const REMOVED_RESULTS = 'REMOVED_RESULTS';
+const REMOVED_SELECTION = 'REMOVED_SELECTION';
 const DATA_LOADING = 'DATA_LOADING';
 
 // ACTION CREATORS
@@ -36,6 +37,10 @@ const gotBookDetails = (details, description) => ({
 
 const removedResults = () => ({
   type: REMOVED_RESULTS,
+});
+
+const removedSelection = () => ({
+  type: REMOVED_SELECTION,
 });
 
 const dataLoading = () => ({
@@ -77,6 +82,14 @@ export const removeResults = () => (dispatch) => {
   }
 };
 
+export const removeSelection = () => (dispatch) => {
+  try {
+    dispatch(removedSelection());
+  } catch (err) {
+    console.error(err);
+  }
+};
+
 export const showLoading = () => (dispatch) => {
   try {
     dispatch(dataLoading());
@@ -109,6 +122,11 @@ const reducer = (state = initialState, action) => {
       };
     case REMOVED_RESULTS:
       return initialState;
+    case REMOVED_SELECTION:
+        return {
+          ...state,
+          selectedBook: {},
+        };
     case DATA_LOADING:
       return {
         ...state,

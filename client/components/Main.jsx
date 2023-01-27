@@ -6,6 +6,7 @@ import {
   getResultsByTitle,
   getBookDetails,
   removeResults,
+  removeSelection,
   showLoading,
 } from '../store';
 
@@ -21,6 +22,7 @@ const Main = ({
   getResultsByTitle,
   loading,
   removeResults,
+  removeSelection,
   results,
   showLoading,
 }) => {
@@ -61,6 +63,10 @@ const Main = ({
   const clearSearchResults = () => {
     removeResults();
     setTitle('');
+  };
+
+  const clearSelectedBook = () => {
+    removeSelection();
   };
 
   return (
@@ -107,7 +113,12 @@ const Main = ({
         />
         <Route
           path="book"
-          element={<BookView details={details} />}
+          element={
+            <BookView
+              clearSelectedBook={clearSelectedBook}
+              details={details}
+            />
+          }
         />
       </Route>
     </Routes>
@@ -121,6 +132,7 @@ Main.propTypes = {
   getResultsByTitle: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
   removeResults: PropTypes.func.isRequired,
+  removeSelection: PropTypes.func.isRequired,
   results: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   showLoading: PropTypes.func.isRequired,
 };
@@ -140,6 +152,7 @@ const mapDispatch = (dispatch) => ({
   getResultsByTitle: (searchInput) => dispatch(getResultsByTitle(searchInput)),
   getBookDetails: (bookInfo) => dispatch(getBookDetails(bookInfo)),
   removeResults: () => dispatch(removeResults()),
+  removeSelection: () => dispatch(removeSelection()),
   showLoading: () => dispatch(showLoading()),
 });
 
