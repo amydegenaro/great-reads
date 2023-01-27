@@ -1,4 +1,4 @@
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import loggingMiddleware from 'redux-logger';
 import thunkMiddleware from 'redux-thunk';
 import axios from 'axios';
@@ -120,9 +120,14 @@ const reducer = (state = initialState, action) => {
   }
 };
 
+/* eslint-disable no-underscore-dangle, no-undef */
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+/* eslint-enable */
 const store = createStore(
   reducer,
-  applyMiddleware(thunkMiddleware, loggingMiddleware)
+  composeEnhancers(
+    applyMiddleware(thunkMiddleware, loggingMiddleware)
+  )
 );
 
 export default store;
