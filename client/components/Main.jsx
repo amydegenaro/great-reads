@@ -14,6 +14,7 @@ import Header from './Header';
 import ResultsView from './Results';
 import BookView from './BookView';
 import Home from './Home';
+import Voting from './Voting';
 
 const Main = ({
   details,
@@ -118,6 +119,12 @@ const Main = ({
               clearSelectedBook={clearSelectedBook}
               details={details}
             />
+          }
+        />
+        <Route
+          path="vote"
+          element={
+            <Voting />
           }
         />
       </Route>
