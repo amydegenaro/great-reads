@@ -17,6 +17,9 @@ const ResultsView = ({
   results,
   selectBook,
   filters,
+  handleSearch,
+  handleSubmit,
+  title,
 }) => (
   <div id="search">
     <FilterOptions
@@ -28,20 +31,26 @@ const ResultsView = ({
       author={filters.author}
       tags={filters.tags}
       year={filters.year}
+      handleSearch={handleSearch}
+      handleSubmit={handleSubmit}
+      title={title}
     />
     <div id="main">
       <SortButtons handleSort={handleSort} sort={filters.sort} />
       {loading ? (
         <p>Loading, please wait...</p>
-      ) : (
-        <div>
-          {foundResults !== false ? (
-            <ResultsList
-              results={filterAndSort(results, filters)}
-              selectBook={selectBook}
-            />
+        ) : (
+          <div>
+          {foundResults ? (
+            <>
+              <h4>Showing results for:  {title}</h4>
+              <ResultsList
+                results={filterAndSort(results, filters)}
+                selectBook={selectBook}
+              />
+            </>
           ) : (
-            <p>No books found!</p>
+            <p className="single-result">No books found!</p>
           )}
         </div>
       )}

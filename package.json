@@ -30,6 +30,9 @@
   "homepage": "https://github.com/amydegenaro/great-reads#readme",
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
+    "@fortawesome/fontawesome-svg-core": "^6.4.0",
+    "@fortawesome/free-solid-svg-icons": "^6.4.0",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "axios": "^0.26.1",
     "express": "^4.17.3",
     "morgan": "^1.10.0",

@@ -11,7 +11,7 @@ import {
 } from '../store';
 
 import Header from './Header';
-import ResultsView from './Results';
+import SearchView from './Search';
 import BookView from './BookView';
 import Home from './Home';
 import Voting from './Voting';
@@ -46,7 +46,7 @@ const Main = ({
     showLoading();
     await getResultsByTitle(title);
     setSort('relevance');
-    navigate('/results');
+    navigate('/search');
   };
 
   const clearFilters = () => {
@@ -96,9 +96,9 @@ const Main = ({
         }
       >
         <Route
-          path="results"
+          path="search"
           element={
-            <ResultsView
+            <SearchView
               handleAuthorFilter={handleAuthorFilter}
               handleTagsFilter={handleTagsFilter}
               handleYearFilter={handleYearFilter}
@@ -109,6 +109,9 @@ const Main = ({
               foundResults={foundResults}
               loading={loading}
               filters={{ sort, author, tags, year }}
+              handleSearch={handleSearch}
+              handleSubmit={handleSubmit}
+              title={title}
             />
           }
         />

@@ -28,30 +28,29 @@ const Main = () => {
 
   return (
     <>
-      <h3>
-        Book Club Ballot
-      </h3>
-      <button
-        type="button"
-        className="btn btn-active"
-        onClick={() => setView('list')}
-      >
-        Create a List
-      </button>
-      <button
-        type="button"
-        className="btn btn-active"
-        onClick={() => setView('vote')}
-      >
-        Submit a Vote
-      </button>
-      <button
-        type="button"
-        className="btn btn-active"
-        onClick={getResults}
-      >
-        Get Results
-      </button>
+      <div id="vote-options" className="button-group">
+        <button
+          type="button"
+          className="btn btn-sort"
+          onClick={() => setView('list')}
+        >
+          Create a List
+        </button>
+        <button
+          type="button"
+          className="btn btn-sort"
+          onClick={() => setView('vote')}
+        >
+          Submit a Vote
+        </button>
+        <button
+          type="button"
+          className="btn btn-sort"
+          onClick={getResults}
+        >
+          Get Results
+        </button>
+      </div>
       {(() => {
         switch (view) {
           case 'list':

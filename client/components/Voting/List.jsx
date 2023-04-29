@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrashCan, faPlus } from '@fortawesome/free-solid-svg-icons'
 
 const BookList = ({
   bookList,
@@ -42,23 +44,39 @@ const BookList = ({
         >
         <div>
           {bookList.map(book => (
-            <div key={book}>
-              <p>{book}</p>
-              <button type="button" onClick={() => handleDelete(book)}>Clear</button>
+            <div
+              key={book}
+              className="single-result"
+            >
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  height: '5rem',
+                  padding: 20
+                }}
+              >
+                <p className="result-title">{book}</p>
+                <FontAwesomeIcon icon={faTrashCan} size="lg" onClick={() => handleDelete(book)} />
+              </div>
             </div>
           ))}
         </div>
-        <input
-          error={error || hasDupe}
-          // helperText={error && "Title cannot be empty" || hasDupe && "This book has already been added"}
-          value={newBook}
-          onChange={handleChange}
-          placeholder="Book title"
-          type="text"
-        />
-        <button type="submit">
-          Add
-        </button>
+        <div style={{ display: 'flex' }}>
+          <input
+            error={error || hasDupe}
+            // helperText={error && "Title cannot be empty" || hasDupe && "This book has already been added"}
+            value={newBook}
+            onChange={handleChange}
+            placeholder="Add a book"
+            type="text"
+          />
+          <button type="submit" className="search-button">
+            <FontAwesomeIcon icon={faPlus} inverse />
+          </button>
+        </div>
+
         <button type="button" className="btn btn-sort" onClick={() => setView('vote')}>
           Submit List
         </button>

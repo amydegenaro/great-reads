@@ -5,6 +5,8 @@ import {
   generateAuthorList,
   generateYearList,
 } from './utilityFunctions';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 
 const FilterOptions = ({
   author,
@@ -15,13 +17,38 @@ const FilterOptions = ({
   results,
   tags,
   year,
+  handleSearch,
+  handleSubmit,
+  title,
 }) => {
   const tagList = generateTagList(results);
   const authorList = generateAuthorList(results);
   const yearList = generateYearList(results);
 
   return (
-    <form id="filters">
+    <form id="filters" onSubmit={handleSubmit}>
+      <div style={{ display: 'flex' }}>
+        <input
+          name="search"
+          value={title}
+          onChange={handleSearch}
+          placeholder="Search by title"
+        />
+        <button type="submit" className="search-button">
+          <FontAwesomeIcon icon={faMagnifyingGlass} inverse />
+        </button>
+      </div>
+
+      <h4
+        style={{
+          marginTop: '2rem',
+          marginBottom: '1rem',
+          textTransform: 'uppercase'
+        }}
+      >
+        Filters
+      </h4>
+
       <label name="author">Author</label>
       <select name="author" onChange={handleAuthorFilter} value={author}>
         <option value="All">All</option>

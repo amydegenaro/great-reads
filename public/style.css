@@ -37,6 +37,57 @@ h1, h2, h3 {
   font-family: 'Prospectus Pro XL Bold';
 }
 
+nav {
+  background-color: #2d231a;
+  overflow: hidden;
+}
+
+nav li {
+  list-style-type: none;
+}
+
+nav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 50px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+nav a:hover {
+  background-color: #e6e6e6;
+  color: #2d231a;
+}
+
+nav a.active {
+  background-color: #e6e6e6;
+  color: #2d231a;
+}
+
+main {
+  margin-top: 210px;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-bottom: 2rem;
+}
+
+label {
+  margin-bottom: 0.75rem;
+}
+
+select, input {
+  font-family: 'Prospectus Pro S Regular';
+  font-size: 1.6rem;
+  height: 3.4rem;
+  min-height: 20px;
+  width: 100%;
+  border: solid #057692 .1rem;
+  background: rgba(255, 255, 255, 0.781);
+  padding: 5px;
+  margin-bottom: 1.3rem;
+}
+
 .home-subtext {
   font-size: 3rem;
   padding: 1rem;
@@ -46,27 +97,47 @@ h1, h2, h3 {
   cursor: pointer;
 }
 
+.sticky-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
 .search-form {
   display: flex;
   width: 35rem;
 }
 
 .search-box {
-  flex: 3 0 0;
-  font-family: 'Prospectus Pro S Regular';
   font-size: 1.6rem;
   text-align: center;
-  height: 3.4rem;
   border-radius: .8rem;
+  height: 3.4rem;
+}
+
+.search-button {
+  height: 3.4rem;
+  border-radius: 0;
+  padding: 0px 10px;
   border: solid #057692 .1rem;
-  background: rgba(255, 255, 255, 0.781);
+  background-image: linear-gradient(
+    to bottom,
+    #07aed8,
+    #057692);
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 2rem;
 }
 
 .btn {
   font-family: 'Prospectus Pro S Regular';
   font-size: 1.6rem;
   color: #fff;
-  border-radius: .8rem;
+  border-radius: 0;
+  /* border-radius: .8rem; */
   border: solid #057692 .1rem;
   background-image: linear-gradient(
     to bottom,
@@ -91,6 +162,18 @@ h1, h2, h3 {
   font-family: 'Prospectus Pro S Thin';
   height: 2.5rem;
   width: 11rem;
+  font-size: 1.4rem;
+  background-image: linear-gradient(
+    to bottom,
+    #b95d79,
+    #8b3a52);
+  border: solid #8b3a52 .1rem;
+}
+
+.btn-icon {
+  font-family: 'Prospectus Pro S Thin';
+  height: 2.5rem;
+  width: 3.5rem;
   font-size: 1.4rem;
   background-image: linear-gradient(
     to bottom,
@@ -172,7 +255,14 @@ h1, h2, h3 {
   width: 40rem;
 }
 
-#home .search-box, #home .btn {
+#home .search-box {
+  flex: 3 0 0;
+  height: 4rem;
+  font-size: 1.7rem;
+  border-radius: 1rem;
+}
+
+#home .btn {
   height: 4rem;
   font-size: 1.7rem;
   border-radius: 1rem;
@@ -182,7 +272,7 @@ h1, h2, h3 {
 
 #header {
   justify-content: space-around;
-  height: 25vh;
+  height: 20vh;
 }
 
 #header h2 {
@@ -191,18 +281,8 @@ h1, h2, h3 {
 
 /* Search Results Content */
 
-#content {
-  margin: 2rem 10%;
-}
-
 #search {
   display: flex;
-}
-
-#sort-buttons {
-  display: flex;
-  justify-content: space-around;
-  margin-bottom: 2rem;
 }
 
 #filters {
@@ -210,7 +290,8 @@ h1, h2, h3 {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  height: 20rem;
+  height: 100%;
+  max-width: 33%;
 }
 
 #main {
@@ -230,7 +311,7 @@ h1, h2, h3 {
   background-color: #fff;
 }
 
-/* Media Queries */
+/* Media Queries for Tablet */
 
 @media screen and (max-width: 850px) {
   #header {
@@ -247,7 +328,7 @@ h1, h2, h3 {
   }
 
   #filters {
-    height: 15rem;
+    max-width: 100%;
   }
 
   #main {
@@ -271,4 +352,17 @@ h1, h2, h3 {
     padding-top: 2rem 0 0 0;
   }
 
+}
+
+/* Media Queries for Mobile */
+
+@media screen and (max-width: 510px) {
+  #home {
+    font-size: 4rem;
+  }
+
+  #home .search-form {
+    flex-direction: column;
+    width: 25rem;
+  }
 }

@@ -29,7 +29,7 @@ const SortButtons = ({ handleSort, sort }) => {
       editionsClass = 'btn btn-sort';
   }
   return (
-    <div id="sort-buttons">
+    <div id="sort-buttons" className="button-group">
       <button
         type="button"
         className={relevanceClass}

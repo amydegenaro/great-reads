@@ -9,7 +9,7 @@ const BookView = ({
   const navigate = useNavigate();
   const handleBackToResults = () => {
     clearSelectedBook();
-    navigate('/results');
+    navigate('/search');
   }
 
   return (

@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBars } from '@fortawesome/free-solid-svg-icons'
 import {
   DragDropContext,
   Droppable,
@@ -60,8 +62,20 @@ const Vote = ({
                         ref={provided.innerRef}
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
+                        className="single-result"
                       >
-                        <p>{`${idx + 1} ${book}`}</p>
+                        <div
+                          style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'space-between',
+                            height: '5rem',
+                            padding: 20
+                          }}
+                        >
+                          <p className="result-title">{`${idx + 1} - ${book}`}</p>
+                          <FontAwesomeIcon icon={faBars} size="lg" />
+                        </div>
                       </div>
                     )}
                   </Draggable>
