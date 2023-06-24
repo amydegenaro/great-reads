@@ -1,32 +1,57 @@
 import React from 'react';
 
 const Results = ({
-  results,
   getResults,
+  results,
+  setTallyType
 }) => {
   const {
     book,
     votes,
     sortedBooks = []
   } = results;
+  const handleTallyChange = (evt) => setTallyType({
+    [evt.target.value]: true
+  });
 
   return (
     <div>
-      {book ? (
+      <label htmlFor="tally-select">Select a Tally Type</label>
+      <select id="tally-select" name="tallyType" onChange={handleTallyChange}>
+        <option value="majority">Majority</option>
+        <option value="ranked">Ranked Choice</option>
+      </select>
+      <button
+        className="btn btn-sort"
+        type="submit"
+        onClick={getResults}
+      >
+        Get Results
+      </button>
+
+      {book && (
         <>
-          <p>
-            {book} wins with {votes} votes
+          <p
+            style={{
+              backgroundColor: '#8b3a52', // dark pink
+              border: 'solid #b95d79 .3rem',
+              color: '#fff',
+              margin: '2rem 0',
+              padding: '1rem',
+            }}
+          >
+            {book} wins with {votes} votes!
           </p>
-          <p>Results</p>
-          {sortedBooks.map((book) => (
-            <p id={book}>{book}</p>
+          <p>Full Results</p>
+          {sortedBooks.map((currentBook) => (
+            <div
+              key={currentBook}
+              className="single-result"
+            >
+              <p className="result-title">{currentBook}</p>
+            </div>
           ))}
         </>
-      ) : (
-        // <p>Hmm no clear winner...</p>
-        <button type="submit" onClick={getResults}>
-          Get Results
-        </button>
       )}
     </div>
   );

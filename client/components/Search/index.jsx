@@ -8,17 +8,17 @@ import ResultsList from './ResultsList';
 
 const ResultsView = ({
   clearFilters,
+  filters,
   foundResults,
   handleAuthorFilter,
   handleTagsFilter,
   handleYearFilter,
+  handleSearch,
   handleSort,
+  handleSubmit,
   loading,
   results,
   selectBook,
-  filters,
-  handleSearch,
-  handleSubmit,
   title,
 }) => (
   <div id="search">
@@ -60,20 +60,23 @@ const ResultsView = ({
 
 ResultsView.propTypes = {
   clearFilters: PropTypes.func.isRequired,
-  foundResults: PropTypes.bool.isRequired,
-  handleAuthorFilter: PropTypes.func.isRequired,
-  handleTagsFilter: PropTypes.func.isRequired,
-  handleYearFilter: PropTypes.func.isRequired,
-  handleSort: PropTypes.func.isRequired,
-  loading: PropTypes.bool.isRequired,
-  results: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  selectBook: PropTypes.func.isRequired,
   filters: PropTypes.shape({
     author: PropTypes.string.isRequired,
     sort: PropTypes.string.isRequired,
     tags: PropTypes.string.isRequired,
     year: PropTypes.string.isRequired,
   }).isRequired,
+  foundResults: PropTypes.bool.isRequired,
+  handleAuthorFilter: PropTypes.func.isRequired,
+  handleTagsFilter: PropTypes.func.isRequired,
+  handleYearFilter: PropTypes.func.isRequired,
+  handleSearch: PropTypes.func.isRequired,
+  handleSort: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
+  results: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  selectBook: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
 };
 
 export default ResultsView;

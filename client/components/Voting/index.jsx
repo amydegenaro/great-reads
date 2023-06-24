@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-// import getMostVotes from './utils/getMostVotes';
+import getMostVotes from './utils/getMostVotes';
 import getRankedChoice from './utils/getRankedChoice';
 import data from './mockData.json';
 
@@ -11,6 +11,7 @@ const Main = () => {
   const [view, setView] = useState('list');
   const [bookList, setBookList] = useState([]);
   const [voteHistory, setVoteHistory] = useState({});
+  const [tallyType, setTallyType] = useState({ majority: true, ranked: false });
   const [results, setResults] = useState({});
 
   // Setup mock data
@@ -20,10 +21,14 @@ const Main = () => {
   }, []);
 
   const getResults = () => {
-    // const winner = getMostVotes(Object.values(voteHistory));
-    const winner = getRankedChoice(Object.values(voteHistory));
+    const votes = Object.values(voteHistory);
+    let winner;
+    if (tallyType.ranked) {
+      winner = getRankedChoice(votes);
+    } else {
+      winner = getMostVotes(votes);
+    }
     setResults(winner);
-    setView('results');
   };
 
   return (
@@ -46,7 +51,7 @@ const Main = () => {
         <button
           type="button"
           className="btn btn-sort"
-          onClick={getResults}
+          onClick={() => setView('results')}
         >
           Get Results
         </button>
@@ -71,7 +76,11 @@ const Main = () => {
             );
           case 'results':
             return (
-              <Results results={results} />
+              <Results
+                getResults={getResults}
+                results={results}
+                setTallyType={setTallyType}
+              />
             );
           default:
             return <div />;

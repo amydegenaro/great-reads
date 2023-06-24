@@ -48,15 +48,7 @@ const BookList = ({
               key={book}
               className="single-result"
             >
-              <div
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  height: '5rem',
-                  padding: 20
-                }}
-              >
+              <div className="vote-card">
                 <p className="result-title">{book}</p>
                 <FontAwesomeIcon icon={faTrashCan} size="lg" onClick={() => handleDelete(book)} />
               </div>
@@ -71,6 +63,7 @@ const BookList = ({
             onChange={handleChange}
             placeholder="Add a book"
             type="text"
+            required
           />
           <button type="submit" className="search-button">
             <FontAwesomeIcon icon={faPlus} inverse />

@@ -64,15 +64,7 @@ const Vote = ({
                         {...provided.dragHandleProps}
                         className="single-result"
                       >
-                        <div
-                          style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'space-between',
-                            height: '5rem',
-                            padding: 20
-                          }}
-                        >
+                        <div className="vote-card">
                           <p className="result-title">{`${idx + 1} - ${book}`}</p>
                           <FontAwesomeIcon icon={faBars} size="lg" />
                         </div>
