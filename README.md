@@ -2,7 +2,9 @@
 
 _Search the Open Library API for books_
 
-Deployed on Heroku at https://greatreads-app.herokuapp.com
+[![Netlify Status](https://api.netlify.com/api/v1/badges/5de20fbf-56f5-4516-990b-ae67ee4616d3/deploy-status)](https://app.netlify.com/sites/greatreads-app/deploys)
+
+Deployed on Netlify at https://greatreads-app.netlify.app/
 
 ## About
 
