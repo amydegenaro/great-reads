@@ -11,7 +11,7 @@
   },
   "scripts": {
     "build": "webpack",
-    "build-netlify": "netlify-lambda build server",
+    "build-netlify": "netlify functions:build --src server",
     "build-watch": "webpack -w",
     "deploy": "script/deploy",
     "lint": "eslint ./ --ignore-path .gitignore",
@@ -36,7 +36,6 @@
     "axios": "^0.26.1",
     "express": "^4.17.3",
     "morgan": "^1.10.0",
-    "netlify-lambda": "^2.0.16",
     "prop-types": "^15.8.1",
     "react": "^17.0.2",
     "react-beautiful-dnd": "^13.1.1",
@@ -60,6 +59,7 @@
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.29.4",
     "eslint-plugin-react-hooks": "^4.4.0",
+    "netlify-cli": "^15.6.0",
     "nodemon": "^2.0.22",
     "webpack": "^5.81.0",
     "webpack-cli": "^4.9.2"
