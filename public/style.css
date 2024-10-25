@@ -70,10 +70,11 @@ nav a.active {
 }
 
 main {
-  margin-top: 210px;
+  margin: 2rem 10%
+  /* margin-top: 26rem;
   margin-left: 10%;
   margin-right: 10%;
-  margin-bottom: 2rem;
+  margin-bottom: 2rem; */
 }
 
 label {
@@ -108,8 +109,8 @@ select, input {
 }
 
 .sticky-header {
-  position: fixed;
-  top: 0;
+  /* position: fixed;
+  top: 0; */
   width: 100%;
 }
 
