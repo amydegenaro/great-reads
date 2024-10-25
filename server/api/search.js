@@ -10,7 +10,7 @@ router.post('/title', async (req, res, next) => {
   try {
     const searchTerms = replaceSpaces(req.body.search); // separate by + signs
     const { data } = await axios.get(
-      `http://openlibrary.org/search.json?title=${searchTerms}`
+      `https://openlibrary.org/search.json?title=${searchTerms}`
     );
     const results = data.docs.map((result) => ({
       title: result.title,
@@ -30,7 +30,7 @@ router.post('/title', async (req, res, next) => {
 // router.post('/author', async (req, res, next) => {
 //   try {
 //     const searchTerms = replaceSpaces(req.body.search)
-//     const {data} = await axios.get(`http://openlibrary.org/search.json?author=${searchTerms}`)
+//     const {data} = await axios.get(`https://openlibrary.org/search.json?author=${searchTerms}`)
 //     res.json(resultKeys)
 //   } catch (err) {
 //     next(err)
