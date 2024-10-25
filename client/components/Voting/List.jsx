@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashCan, faPlus } from '@fortawesome/free-solid-svg-icons'
 
@@ -23,6 +24,7 @@ const BookList = ({
     setBookList([...bookSet])
   }
 
+  // eslint-disable-next-line consistent-return
   const handleSubmit = (evt) => {
     evt.preventDefault()
     if (!newBook) return setError(true)
@@ -41,7 +43,7 @@ const BookList = ({
       <form
         autoComplete="off"
         onSubmit={handleSubmit}
-        >
+      >
         <div>
           {bookList.map(book => (
             <div
@@ -57,8 +59,6 @@ const BookList = ({
         </div>
         <div style={{ display: 'flex' }}>
           <input
-            error={error || hasDupe}
-            // helperText={error && "Title cannot be empty" || hasDupe && "This book has already been added"}
             value={newBook}
             onChange={handleChange}
             placeholder="Add a book"
@@ -70,6 +70,9 @@ const BookList = ({
           </button>
         </div>
 
+        {error && <p>Title cannot be empty</p>}
+        {hasDupe && <p>This book has already been added</p>}
+
         <button type="button" className="btn btn-sort" onClick={() => setView('vote')}>
           Submit List
         </button>
@@ -77,5 +80,11 @@ const BookList = ({
     </>
   )
 }
+
+BookList.propTypes = {
+  bookList: PropTypes.arrayOf(PropTypes.string).isRequired,
+  setBookList: PropTypes.func.isRequired,
+  setView: PropTypes.func.isRequired,
+};
 
 export default BookList;

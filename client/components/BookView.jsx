@@ -47,12 +47,12 @@ const BookView = ({
 BookView.propTypes = {
   clearSelectedBook: PropTypes.func.isRequired,
   details: PropTypes.shape({
-    author: PropTypes.string.isRequired,
-    cover: PropTypes.string.isRequired,
-    date: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    pages: PropTypes.string.isRequired,
+    author: PropTypes.string,
+    cover: PropTypes.string,
+    date: PropTypes.string,
+    description: PropTypes.string,
+    title: PropTypes.string,
+    pages: PropTypes.string,
   }).isRequired,
 };
 

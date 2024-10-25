@@ -1,24 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Outlet, useNavigate } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 // import SearchBox from './SearchBox';
 import Nav from './Nav';
 
-const Header = ({ clearSearchResults, handleSearch, handleSubmit, title }) => {
-  const navigate = useNavigate();
-
-  return (
+const Header = ({
+  clearSearchResults,
+  // handleSearch,
+  // handleSubmit,
+  // title
+}) => (
     <>
       <div className="sticky-header">
         <header id="header">
-          <h2
-            onClick={() => {
-              clearSearchResults();
-              navigate('/');
-            }}
-            className="header-title"
-          >
-            GreatReads.
+          <h2 className="header-title">
+            <Link to="/" onClick={clearSearchResults}>
+              GreatReads.
+            </Link>
           </h2>
           {/* <SearchBox
             handleSearch={handleSearch}
@@ -33,13 +31,12 @@ const Header = ({ clearSearchResults, handleSearch, handleSubmit, title }) => {
       </main>
     </>
   );
-};
 
 Header.propTypes = {
   clearSearchResults: PropTypes.func.isRequired,
-  handleSearch: PropTypes.func.isRequired,
-  handleSubmit: PropTypes.func.isRequired,
-  title: PropTypes.string.isRequired,
+  // handleSearch: PropTypes.func.isRequired,
+  // handleSubmit: PropTypes.func.isRequired,
+  // title: PropTypes.string.isRequired,
 };
 
 export default Header;

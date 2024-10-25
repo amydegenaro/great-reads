@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import {
-  getResultsByTitle,
-  getBookDetails,
-  removeResults,
-  removeSelection,
-  showLoading,
+  fetchResultsByTitle,
+  fetchBookDetails,
+  tryRemoveResults,
+  tryRemoveSelection,
+  tryShowLoading,
 } from '../store';
 
 import Header from './Header';
@@ -159,11 +159,11 @@ const mapState = (state) => ({
 });
 
 const mapDispatch = (dispatch) => ({
-  getResultsByTitle: (searchInput) => dispatch(getResultsByTitle(searchInput)),
-  getBookDetails: (bookInfo) => dispatch(getBookDetails(bookInfo)),
-  removeResults: () => dispatch(removeResults()),
-  removeSelection: () => dispatch(removeSelection()),
-  showLoading: () => dispatch(showLoading()),
+  getResultsByTitle: (searchInput) => dispatch(fetchResultsByTitle(searchInput)),
+  getBookDetails: (bookInfo) => dispatch(fetchBookDetails(bookInfo)),
+  removeResults: () => dispatch(tryRemoveResults()),
+  removeSelection: () => dispatch(tryRemoveSelection()),
+  showLoading: () => dispatch(tryShowLoading()),
 });
 
 export default connect(mapState, mapDispatch)(Main);

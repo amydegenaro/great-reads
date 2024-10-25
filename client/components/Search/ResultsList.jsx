@@ -3,10 +3,12 @@ import PropTypes from 'prop-types';
 
 const SearchResults = ({ results, selectBook }) => (
   <div id="results">
-    {results.map((result, idx) => (
-      <div key={`result-${idx}`} className="single-result">
-        <h4 className="result-title" onClick={() => selectBook(result)}>
-          {result.title}
+    {results.map((result) => (
+      <div key={`result-${result.worksID}`} className="single-result">
+        <h4 className="result-title">
+          <button onClick={() => selectBook(result)} type="button">
+            {result.title}
+          </button>
         </h4>
         <h4>by {result.author}</h4>
         <p>First published in {result.year}</p>

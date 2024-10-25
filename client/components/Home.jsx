@@ -9,19 +9,19 @@ const Home = ({
   loading,
   title,
 }) => (
-    <div id="home">
-      <h2>GreatReads.</h2>
-      <SearchBox
-        handleSearch={handleSearch}
-        handleSubmit={handleSubmit}
-        title={title}
-      />
-      {foundResults === false && (
-        <p className="home-subtext">No books found, try again.</p>
-      )}
-      {loading && <p className="home-subtext">Searching the shelves...</p>}
-    </div>
-  );
+  <div id="home">
+    <h2>GreatReads.</h2>
+    <SearchBox
+      handleSearch={handleSearch}
+      handleSubmit={handleSubmit}
+      title={title}
+    />
+    {foundResults === false && (
+      <p className="home-subtext">No books found, try again.</p>
+    )}
+    {loading && <p className="home-subtext">Searching the shelves...</p>}
+  </div>
+);
 
 Home.propTypes = {
   foundResults: PropTypes.bool,

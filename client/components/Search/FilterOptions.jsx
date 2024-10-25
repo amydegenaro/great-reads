@@ -1,25 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { v4 as uuidv4 } from 'uuid';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import {
   generateTagList,
   generateAuthorList,
   generateYearList,
 } from './utilityFunctions';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 
 const FilterOptions = ({
   author,
   clearFilters,
   handleAuthorFilter,
+  handleSearch,
+  handleSubmit,
   handleTagsFilter,
   handleYearFilter,
   results,
   tags,
-  year,
-  handleSearch,
-  handleSubmit,
   title,
+  year,
 }) => {
   const tagList = generateTagList(results);
   const authorList = generateAuthorList(results);
@@ -49,35 +50,41 @@ const FilterOptions = ({
         Filters
       </h4>
 
-      <label name="author">Author</label>
-      <select name="author" onChange={handleAuthorFilter} value={author}>
-        <option value="All">All</option>
-        {authorList.map((authorName, idx) => (
-          <option key={`author-${idx}`} value={authorName}>
-            {authorName}
-          </option>
-        ))}
-      </select>
+      <label htmlFor="authorFilter" name="author">
+        Author
+        <select id="authorFilter" name="author" onChange={handleAuthorFilter} value={author}>
+          <option value="All">All</option>
+          {authorList.map((authorName) => (
+            <option key={`author-${uuidv4()}`} value={authorName}>
+              {authorName}
+            </option>
+          ))}
+        </select>
+      </label>
 
-      <label name="tags">Tags</label>
-      <select name="tags" onChange={handleTagsFilter} value={tags}>
-        <option value="All">All</option>
-        {tagList.map((tag, idx) => (
-          <option key={`tag-${idx}`} value={tag}>
-            {tag}
-          </option>
-        ))}
-      </select>
+      <label htmlFor="tagsFilter" name="tags">
+        Tags
+        <select id="tagsFilter" name="tags" onChange={handleTagsFilter} value={tags}>
+          <option value="All">All</option>
+          {tagList.map((tag) => (
+            <option key={`tag-${uuidv4()}`} value={tag}>
+              {tag}
+            </option>
+          ))}
+        </select>
+      </label>
 
-      <label name="year">Year Published</label>
-      <select name="year" onChange={handleYearFilter} value={year}>
-        <option value="All">All</option>
-        {yearList.map((bookYear, idx) => (
-          <option key={`year-${idx}`} value={bookYear}>
-            {bookYear}
-          </option>
-        ))}
-      </select>
+      <label htmlFor="yearFilter" name="year">
+        Year Published
+        <select id="yearFilter" name="year" onChange={handleYearFilter} value={year}>
+          <option value="All">All</option>
+          {yearList.map((bookYear) => (
+            <option key={`year-${uuidv4()}`} value={bookYear}>
+              {bookYear}
+            </option>
+          ))}
+        </select>
+      </label>
 
       <button type="button" className="btn btn-clear" onClick={clearFilters}>
         Clear Filters
@@ -90,10 +97,13 @@ FilterOptions.propTypes = {
   author: PropTypes.string.isRequired,
   clearFilters: PropTypes.func.isRequired,
   handleAuthorFilter: PropTypes.func.isRequired,
+  handleSearch: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
   handleTagsFilter: PropTypes.func.isRequired,
   handleYearFilter: PropTypes.func.isRequired,
   results: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   tags: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
   year: PropTypes.string.isRequired,
 };
 

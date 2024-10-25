@@ -1,4 +1,6 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 import {
@@ -39,8 +41,8 @@ const Vote = ({
 
   const handleVote = (evt) => {
     evt.preventDefault()
-    const vote = { [voterId]: voteOrder}
-    setVoteHistory({...voteHistory, ...vote})
+    const vote = { [voterId]: voteOrder }
+    setVoteHistory({ ...voteHistory, ...vote })
     setVoterId(voterId + 1);
     // setNewVote({})
   }
@@ -49,19 +51,19 @@ const Vote = ({
     <>
       <DragDropContext onDragEnd={onDragEnd}>
         <Droppable droppableId="bookList">
-          {(provided) => (
+          {(providedBookList) => (
             <div
-              ref={provided.innerRef}
-              {...provided.droppableProps}
+              ref={providedBookList.innerRef}
+              {...providedBookList.droppableProps}
             >
               {
                 voteOrder.map((book, idx) => (
                   <Draggable key={book} draggableId={book} index={idx}>
-                    {(provided) => (
+                    {(providedBook) => (
                       <div
-                        ref={provided.innerRef}
-                        {...provided.draggableProps}
-                        {...provided.dragHandleProps}
+                        ref={providedBook.innerRef}
+                        {...providedBook.draggableProps}
+                        {...providedBook.dragHandleProps}
                         className="single-result"
                       >
                         <div className="vote-card">
@@ -73,7 +75,7 @@ const Vote = ({
                   </Draggable>
                 ))
               }
-              {provided.placeholder}
+              {providedBookList.placeholder}
             </div>
           )}
         </Droppable>
@@ -88,5 +90,11 @@ const Vote = ({
     </>
   )
 }
+
+Vote.propTypes = {
+  bookList: PropTypes.arrayOf({}).isRequired,
+  voteHistory: PropTypes.shape({}).isRequired,
+  setVoteHistory: PropTypes.func.isRequired,
+};
 
 export default Vote;

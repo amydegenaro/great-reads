@@ -39,8 +39,8 @@ const ResultsView = ({
       <SortButtons handleSort={handleSort} sort={filters.sort} />
       {loading ? (
         <p>Loading, please wait...</p>
-        ) : (
-          <div>
+      ) : (
+        <div>
           {foundResults ? (
             <>
               <h4>Showing results for:  {title}</h4>
@@ -58,6 +58,10 @@ const ResultsView = ({
   </div>
 );
 
+ResultsView.defaultProps = {
+  foundResults: false,
+}
+
 ResultsView.propTypes = {
   clearFilters: PropTypes.func.isRequired,
   filters: PropTypes.shape({
@@ -66,7 +70,7 @@ ResultsView.propTypes = {
     tags: PropTypes.string.isRequired,
     year: PropTypes.string.isRequired,
   }).isRequired,
-  foundResults: PropTypes.bool.isRequired,
+  foundResults: PropTypes.bool,
   handleAuthorFilter: PropTypes.func.isRequired,
   handleTagsFilter: PropTypes.func.isRequired,
   handleYearFilter: PropTypes.func.isRequired,

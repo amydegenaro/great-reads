@@ -101,8 +101,10 @@ select, input {
   padding: 1rem;
 }
 
-.header-title {
+.header-title a {
+  color: inherit;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .sticky-header {
@@ -204,8 +206,10 @@ select, input {
   background-color: #fff;
 }
 
-.result-title {
+.result-title button {
+  all: unset;
   color: #057692;
+  cursor: pointer;
   font-size: 1.7rem;
 }
 

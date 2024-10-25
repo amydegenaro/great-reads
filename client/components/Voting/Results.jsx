@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Results = ({
   getResults,
@@ -16,11 +17,13 @@ const Results = ({
 
   return (
     <div>
-      <label htmlFor="tally-select">Select a Tally Type</label>
-      <select id="tally-select" name="tallyType" onChange={handleTallyChange}>
-        <option value="majority">Majority</option>
-        <option value="ranked">Ranked Choice</option>
-      </select>
+      <label htmlFor="tally-select">
+        Select a Tally Type
+        <select id="tally-select" name="tallyType" onChange={handleTallyChange}>
+          <option value="majority">Majority</option>
+          <option value="ranked">Ranked Choice</option>
+        </select>
+      </label>
       <button
         className="btn btn-sort"
         type="submit"
@@ -55,6 +58,16 @@ const Results = ({
       )}
     </div>
   );
+};
+
+Results.propTypes = {
+  getResults: PropTypes.func.isRequired,
+  results: PropTypes.shape({
+    book: PropTypes.string,
+    votes: PropTypes.number,
+    sortedBooks: PropTypes.arrayOf(PropTypes.string),
+  }).isRequired,
+  setTallyType: PropTypes.func.isRequired,
 };
 
 export default Results;

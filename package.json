@@ -6,8 +6,8 @@
   "license": "ISC",
   "main": "index.js",
   "engines": {
-    "node": "16.x",
-    "npm": "8.x"
+    "node": ">=16.x",
+    "npm": ">=8.x"
   },
   "scripts": {
     "build": "webpack",
@@ -45,7 +45,8 @@
     "redux": "^4.1.2",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.4.1",
-    "serverless-http": "^3.0.2"
+    "serverless-http": "^3.0.2",
+    "uuid": "^10.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.17.8",

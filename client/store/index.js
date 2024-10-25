@@ -48,7 +48,7 @@ const dataLoading = () => ({
 });
 
 // THUNK CREATORS
-export const getResultsByTitle = (search) => async (dispatch) => {
+export const fetchResultsByTitle = (search) => async (dispatch) => {
   try {
     const { data } = await axios.post('/.netlify/functions/index/api/search/title', { search });
     if (data.length === 0) {
@@ -61,7 +61,7 @@ export const getResultsByTitle = (search) => async (dispatch) => {
   }
 };
 
-export const getBookDetails = (book) => async (dispatch) => {
+export const fetchBookDetails = (book) => async (dispatch) => {
   try {
     const { openLibID, worksID } = book;
     const bookRes = await axios.post('/.netlify/functions/index/api/book/', { openLibID });
@@ -74,7 +74,7 @@ export const getBookDetails = (book) => async (dispatch) => {
   }
 };
 
-export const removeResults = () => (dispatch) => {
+export const tryRemoveResults = () => (dispatch) => {
   try {
     dispatch(removedResults());
   } catch (err) {
@@ -82,7 +82,7 @@ export const removeResults = () => (dispatch) => {
   }
 };
 
-export const removeSelection = () => (dispatch) => {
+export const tryRemoveSelection = () => (dispatch) => {
   try {
     dispatch(removedSelection());
   } catch (err) {
@@ -90,7 +90,7 @@ export const removeSelection = () => (dispatch) => {
   }
 };
 
-export const showLoading = () => (dispatch) => {
+export const tryShowLoading = () => (dispatch) => {
   try {
     dispatch(dataLoading());
   } catch (err) {

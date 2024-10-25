@@ -12,10 +12,10 @@ const Nav = () => {
           <Link to="/">Home</Link>
         </li> */}
         <li>
-          <Link className={getIsActive('/search') && 'active'} to="/search">Search</Link>
+          <Link className={getIsActive('/search') ? 'active' : ''} to="/search">Search</Link>
         </li>
         <li>
-          <Link className={getIsActive('/vote') && 'active'} to="/vote">Vote</Link>
+          <Link className={getIsActive('/vote') ? 'active' : ''} to="/vote">Vote</Link>
         </li>
         {/* <li>
           <Link className={getIsActive('/vote') && 'active'} to="/vote">Create A Ballot</Link>
