@@ -6,7 +6,7 @@ const SearchBox = ({
   handleSubmit,
   title,
 }) => (
-  <form onSubmit={handleSubmit} className="search-form">
+  <form onSubmit={handleSubmit} className="search-form" name="home-search">
     <input
       name="title"
       className="search-box"

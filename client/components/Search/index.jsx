@@ -9,7 +9,7 @@ import ResultsList from './ResultsList';
 const ResultsView = ({
   clearFilters,
   filters,
-  foundResults,
+  foundResults = false,
   handleAuthorFilter,
   handleTagsFilter,
   handleYearFilter,
@@ -21,7 +21,7 @@ const ResultsView = ({
   selectBook,
   title,
 }) => (
-  <div id="search">
+  <div id="search" data-testid="ResultsView">
     <FilterOptions
       handleAuthorFilter={handleAuthorFilter}
       handleTagsFilter={handleTagsFilter}
@@ -57,10 +57,6 @@ const ResultsView = ({
     </div>
   </div>
 );
-
-ResultsView.defaultProps = {
-  foundResults: false,
-}
 
 ResultsView.propTypes = {
   clearFilters: PropTypes.func.isRequired,

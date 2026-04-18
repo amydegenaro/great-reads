@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 import SearchBox from './SearchBox';
 
 const Home = ({
-  foundResults,
+  foundResults = null,
   handleSearch,
   handleSubmit,
   loading,
   title,
 }) => (
-  <div id="home">
-    <h2>GreatReads.</h2>
+  <div id="home" data-testid="Home">
+    <h1>GreatReads.</h1>
     <SearchBox
       handleSearch={handleSearch}
       handleSubmit={handleSubmit}
@@ -29,10 +29,6 @@ Home.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
   title: PropTypes.string.isRequired,
-};
-
-Home.defaultProps = {
-  foundResults: null,
 };
 
 export default Home;

@@ -27,7 +27,7 @@ const FilterOptions = ({
   const yearList = generateYearList(results);
 
   return (
-    <form id="filters" onSubmit={handleSubmit}>
+    <form id="filters" onSubmit={handleSubmit} name="filter-search">
       <div style={{ display: 'flex' }}>
         <input
           name="search"

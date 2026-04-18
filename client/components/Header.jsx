@@ -10,27 +10,27 @@ const Header = ({
   // handleSubmit,
   // title
 }) => (
-    <>
-      <div className="sticky-header">
-        <header id="header">
-          <h2 className="header-title">
-            <Link to="/" onClick={clearSearchResults}>
-              GreatReads.
-            </Link>
-          </h2>
-          {/* <SearchBox
+  <>
+    <div className="sticky-header" data-testid="Header">
+      <header id="header">
+        <h2 className="header-title">
+          <Link to="/" onClick={clearSearchResults}>
+            GreatReads.
+          </Link>
+        </h2>
+        {/* <SearchBox
             handleSearch={handleSearch}
             handleSubmit={handleSubmit}
             title={title}
           /> */}
-        </header>
-        <Nav />
-      </div>
-      <main id="content">
-        <Outlet />
-      </main>
-    </>
-  );
+      </header>
+      <Nav />
+    </div>
+    <main id="content">
+      <Outlet />
+    </main>
+  </>
+);
 
 Header.propTypes = {
   clearSearchResults: PropTypes.func.isRequired,

@@ -13,7 +13,7 @@ const BookView = ({
   }
 
   return (
-    <div id="book-view">
+    <div id="book-view" data-testid="BookView">
       <button
         type="button"
         className="btn btn-back"

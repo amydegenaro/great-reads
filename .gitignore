@@ -6,3 +6,6 @@ secrets.js
 # Local Netlify folder
 .netlify
 functions/
+
+# Testing coverage
+coverage/
