@@ -11,14 +11,14 @@ import {
 } from '../store';
 
 import Header from './Header';
-import SearchView from './Search';
+import ResultsView from './Search';
 import BookView from './BookView';
 import Home from './Home';
 import Voting from './Voting';
 
 const Main = ({
   details,
-  foundResults,
+  foundResults = null,
   getBookDetails,
   getResultsByTitle,
   loading,
@@ -98,7 +98,7 @@ const Main = ({
         <Route
           path="search"
           element={
-            <SearchView
+            <ResultsView
               handleAuthorFilter={handleAuthorFilter}
               handleTagsFilter={handleTagsFilter}
               handleYearFilter={handleYearFilter}
@@ -145,10 +145,6 @@ Main.propTypes = {
   removeSelection: PropTypes.func.isRequired,
   results: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   showLoading: PropTypes.func.isRequired,
-};
-
-Main.defaultProps = {
-  foundResults: null,
 };
 
 const mapState = (state) => ({

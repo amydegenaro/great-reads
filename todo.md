@@ -13,6 +13,8 @@
 - Cleanup proptypes, linting, commented code, etc.
 - Move inline styling to classes and reuse (card, etc.)
 - Look into SSR setup
+- React 19
+- Redux alternatives
 
 ## Search Page
 - Switch sort from three buttons to one dropdown (or other normal UI for sorting)
