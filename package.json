@@ -68,7 +68,7 @@
     "eslint-plugin-react-hooks": "^4.6.2",
     "jest": "^30.3.0",
     "jest-environment-jsdom": "^30.3.0",
-    "netlify-cli": "^24.9.0",
+    "netlify-cli": "^25.0.0",
     "nodemon": "^3.1.14",
     "webpack": "^5.105.4",
     "webpack-cli": "^4.10.0"
