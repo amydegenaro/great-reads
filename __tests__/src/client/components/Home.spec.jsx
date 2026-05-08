@@ -1,6 +1,6 @@
 import React from 'react';
-import { render, screen } from '../../test-utils';
-import Home from '../../../client/components/Home';
+import { render, screen } from '../../../test-utils';
+import Home from '../../../../src/client/components/Home';
 
 describe('Home component', () => {
   it('renders the title with search box', () => {

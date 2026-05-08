@@ -1,6 +1,6 @@
 import React from 'react';
-import { render, screen } from '../../test-utils';
-import BookView from '../../../client/components/BookView';
+import { render, screen } from '../../../test-utils';
+import BookView from '../../../../src/client/components/BookView';
 
 describe('BookView component', () => {
   const mockDetails = {

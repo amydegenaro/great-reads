@@ -1,8 +1,8 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom'
 import { render as rtlRender } from '@testing-library/react';
-import { render, screen } from '../../test-utils';
-import Nav from '../../../client/components/Nav';
+import { render, screen } from '../../../test-utils';
+import Nav from '../../../../src/client/components/Nav';
 
 describe('Nav component', () => {
   it('renders the nav links', () => {

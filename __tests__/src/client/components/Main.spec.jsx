@@ -3,16 +3,16 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom'
 import { render } from '@testing-library/react';
-import { fireEvent, screen, waitFor } from '../../test-utils';
-import Main from '../../../client/components/Main';
+import { fireEvent, screen, waitFor } from '../../../test-utils';
+import Main from '../../../../src/client/components/Main';
 
 jest.mock('react-redux', () => ({
   connect: jest.fn(() => (x) => x),
 }));
 
-jest.mock('../../../client/components/Voting', () => () => <div data-testid="voting">Voting</div>);
+jest.mock('../../../../src/client/components/Voting', () => () => <div data-testid="voting">Voting</div>);
 
-jest.mock('../../../client/store', () => ({
+jest.mock('../../../../src/client/store', () => ({
   fetchResultsByTitle: jest.fn(),
   fetchBookDetails: jest.fn(),
   tryRemoveResults: jest.fn(),

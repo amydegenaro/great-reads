@@ -11,14 +11,14 @@
   },
   "scripts": {
     "build": "webpack",
-    "build-netlify": "netlify functions:build --src server",
+    "build-netlify": "netlify functions:build --src src/server",
     "build-watch": "webpack -w",
     "deploy": "script/deploy",
-    "lint": "eslint ./ --ignore-path .gitignore",
+    "lint": "eslint ./src --ignore-path .gitignore",
     "pretest": "npm run lint",
-    "start": "node server",
+    "start": "node src/server",
     "start-dev": "NODE_ENV='development' npm run build-watch & npm run start-server",
-    "start-server": "nodemon server -e html,js,scss --ignore public --ignore client",
+    "start-server": "nodemon src/server -e html,js,scss --ignore src/public --ignore src/client",
     "test": "jest"
   },
   "repository": {

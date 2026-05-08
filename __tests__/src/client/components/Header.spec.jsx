@@ -1,6 +1,6 @@
 import React from 'react';
-import { fireEvent, render, screen } from '../../test-utils';
-import Header from '../../../client/components/Header';
+import { fireEvent, render, screen } from '../../../test-utils';
+import Header from '../../../../src/client/components/Header';
 
 describe('Header component', () => {
   it('renders the header title and nav links', () => {

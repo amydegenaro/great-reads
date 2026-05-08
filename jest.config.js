@@ -12,8 +12,8 @@ const config = {
 
   // An array of glob patterns indicating a set of files for which coverage information should be collected
   collectCoverageFrom: [
-    "client/components/**/*.{js,jsx}",
-    "client/store/**/*.{js,jsx}",
+    "src/client/components/**/*.{js,jsx}",
+    "src/client/store/**/*.{js,jsx}",
   ],
 
   // The directory where Jest should output its coverage files
@@ -33,13 +33,13 @@ const config = {
       lines: 88,
       statements: 85,
     },
-    'client/store': {
+    'src/client/store': {
       branches: 0,
       functions: 0,
       lines: 0,
       statements: 0,
     },
-    'client/components/Voting': {
+    'src/client/components/Voting': {
       branches: 0,
       functions: 0,
       lines: 0,
@@ -49,6 +49,12 @@ const config = {
 
   // The test environment that will be used for testing
   testEnvironment: "jest-environment-jsdom",
+
+  // An array of regexp pattern strings that are matched against all test paths before executing the test
+  testPathIgnorePatterns: [
+    "/node_modules/",
+    "test-utils.js",
+  ]
 };
 
 module.exports = config;

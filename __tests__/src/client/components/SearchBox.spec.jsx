@@ -1,6 +1,6 @@
 import React from 'react';
-import { fireEvent, render, screen } from '../../test-utils';
-import SearchBox from '../../../client/components/SearchBox';
+import { fireEvent, render, screen } from '../../../test-utils';
+import SearchBox from '../../../../src/client/components/SearchBox';
 
 describe('SearchBox component', () => {
   it('renders the search box', () => {
