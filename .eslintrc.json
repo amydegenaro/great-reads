@@ -17,7 +17,7 @@
   "overrides": [
     {
       "files": [
-        "tests/**/*"
+        "__tests__/**/*"
       ],
       "plugins": [
         "jest"

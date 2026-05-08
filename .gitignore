@@ -1,5 +1,5 @@
 node_modules
-public/bundle.js*
+src/public/bundle.js*
 secrets.js
 .DS_Store
 

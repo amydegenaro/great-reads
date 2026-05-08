@@ -12,7 +12,7 @@ git checkout -b deploy
 
 webpack --mode production
 
-git add -f public/bundle.js public/bundle.js.map
+git add -f src/public/bundle.js src/public/bundle.js.map
 
 git commit --allow-empty -m 'Deploying'
 
